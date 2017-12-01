@@ -1,0 +1,103 @@
+@import "../options";
+
+.area-events {
+  .row { margin: 0 -10px; }
+  .month {
+    font-weight: $wMedium;
+    padding: 0 40px 20px;
+  }
+  .col-md-6 { padding: 20px 10px; }
+  .col-md-6:nth-child(2n) { clear: both; }
+  .vc-mid {
+    background: center;
+    background-size: cover;
+    width: 50%;
+  }
+  .data {
+    background: $bg5;
+    color: $cr5;
+    line-height: 1.2;
+    margin: 20px -15px 60px 0;
+    padding: 20px;
+    position: relative;
+    text-align: right;
+    z-index: 1;
+    .name {
+      font-size: 25px;
+      font-weight: $wBold;
+      text-transform: uppercase;
+      div {
+        height: 3px;
+        margin: 15px 0 15px auto;
+        width: 80px;
+      }
+    }
+    .meta {
+      font-size: 16px;
+      font-weight: $wMedium;
+      margin-top: 25px;
+    }
+    .ih-btn {
+      bottom: -40px;
+      position: absolute;
+      right: 0;
+    }
+  }
+  .owl-nav {
+    left: 0;
+    position: absolute;
+    top: 0;
+    z-index: 3;
+    width: 100%;
+  }
+  .owl-prev,
+  .owl-next {
+    background: url("../img/nav-arrow-l.svg") center no-repeat;
+    background-size: contain;
+    height: 20px;
+    left: 0;
+    margin: 5px 20px;
+    position: absolute;
+    width: 20px;
+    &.disabled { opacity: .1; }
+  }
+  .owl-next {
+    background-image: url("../img/nav-arrow-r.svg");
+    left: auto;
+    right: 0;
+  }
+  .showEvent {
+    background: $bg6;
+    border: 0 !important;
+    color: $cr6;
+    margin-top: 15px;
+  }
+  .addEvent {
+    background: $bg5;
+    border: 0;
+    color: $cr5;
+  }
+  .item {
+    &:not(.true) > div:nth-child(11) ~ div,
+    &.true .showEvent { display: none; }
+  }
+  .events { margin: 0 -10px; }
+}
+
+@media (max-width: 480px) {
+  .area-events {
+    .container { padding: 0; }
+    .v-mid { padding-top: 120px; }
+    .vc-mid {
+      display: block;
+      width: 100%;
+    }
+    .img {
+      height: 200px;
+      left: 0;
+      position: absolute;
+      top: 0;
+    }
+    .data { margin: 30px 15px; }
+  }
+}

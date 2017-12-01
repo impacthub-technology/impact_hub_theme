@@ -1,0 +1,171 @@
+@import "options";
+
+#pageMenu {
+  padding: 20px 0;
+  text-align: center;
+  width: 100%;
+  div > .icon {
+    display: block;
+    margin-bottom: 10px;
+    max-height: 70px;
+    transition: .2s;
+    &.ib {
+      margin: 0 auto;
+      max-height: 0;
+    }
+  }
+  h3 {
+    span { vertical-align: middle; }
+    .icon {
+      max-height: 0;
+      transition: .2s;
+      width: 0;
+      &.ib {
+        margin: 0 30px 0 0;
+        max-height: 35px;
+        width: auto;
+      }
+    }
+  }
+  .title {
+    color: $bg2;
+    margin: 0 0 4px;
+  }
+  .container {
+    max-width: 1030px;
+    padding: 0;
+  }
+  .mCSB_scrollTools_horizontal {
+    height: 0;
+    opacity: 1;
+    position: initial;
+    &:before,
+    &:after {
+      background: url(../img/nav-l.png) left no-repeat;
+      background-size: 120% 100%;
+      content: '';
+      height: 80px;
+      left: 20px;
+      position: absolute;
+      top: 0;
+      width: 65px;
+      z-index: 2;
+    }
+    &:after {
+      background-image: url(../img/nav-r.png);
+      background-position: right;
+      left: auto;
+      right: 20px;
+    }
+    .mCSB_draggerContainer { display: none; }
+    .mCSB_buttonLeft, .mCSB_buttonRight {
+      background: url("../img/nav-arrow-l.svg") center no-repeat $bg6;
+      background-size: 33% auto;
+      height: 100%;
+      left: 0;
+      opacity: 1;
+      top: 0;
+      width: 30px;
+      z-index: 4;
+    }
+    .mCSB_buttonRight {
+      background-image: url("../img/nav-arrow-r.svg");
+      left: auto;
+      right: 0;
+    }
+  }
+  .nav {
+    height: 57px;
+    overflow: hidden;
+    overflow-x: auto;
+    white-space: nowrap;
+    width: 100%;
+    a.na {
+      border-bottom: 3px solid transparent;
+      color: rgba($cr5,.5);
+      display: inline-block;
+      font-weight: $wMedium;
+      margin: 5px;
+      padding: 8px;
+      transition: .2s;
+      &.current, &:hover { color: $cr5; }
+      &.current { border-bottom-width: 3px }
+      &:nth-child(1) { margin-left: 75px; }
+      &:nth-last-child(1) { margin-right: 75px; }
+    }
+  }
+  .vc-mid.fort { padding: 0 15px; }
+  .vc-mid.forn {
+    position: relative;
+    width: 100%;
+  }
+}
+
+#header {
+  &:not(.scroll) #pageMenu {
+    .v-mid, .vc-mid { display: block; }
+  }
+  &.scroll #pageMenu {
+    padding: 0;
+    h3 { font-size: 20px; }
+  }
+}
+
+#header.scroll #pageMenu {
+  .v-mid {
+    height: 64px;
+    overflow: hidden;
+  }
+  .forn > div {
+    height: 100%;
+    left: 0;
+    position: absolute;
+    top: 0;
+    width: 100%;
+  }
+}
+
+@media (max-width: 1200px) {
+  #pageMenu {
+    .nav {
+      height: 64px;
+      font-size: 25px;
+    }
+  }
+}
+
+@media (max-width: 767px) {
+  #pageMenu {
+    .container { padding: 0; }
+    /*.v-mid, .vc-mid { display: block; }*/
+  }
+  #header.scroll h3 {
+    /*margin: 5px 0 -10px;*/
+    margin: 0;
+    position: relative;
+    z-index: 12;
+  }
+}
+
+@media (max-width: 480px) {
+  #pageMenu {
+    .nav {
+      font-size: 18px;
+      height: 54px;
+      .mCSB_scrollTools_horizontal {
+        &:before, &:after { width: 30px; }
+      }
+      a.na:nth-child(1) { margin-left: 40px; }
+      a.na:nth-last-child(1) { margin-right: 40px; }
+    }
+  }
+  #header.scroll #pageMenu {
+    .v-mid { height: 54px; }
+  }
+}
+
+@media (min-width: 1201px) {
+  #header.scroll #pageMenu {
+    .v-mid { height: 57px; }
+  }
+}

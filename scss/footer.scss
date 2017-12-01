@@ -1,0 +1,39 @@
+@import "options";
+
+#footer {
+  color: $cr4;
+  font-size: 16px;
+  padding: 40px 0;
+  text-align: left;
+  &.num-2 .col-sm-4 { width: 50%; }
+  &.num-1 .col-sm-4 { width: 100%; }
+  .row { margin: 0 -15px; }
+  li { display: block; }
+  svg {
+    height: 40px;
+    margin: 10px;
+    width: 40px;
+    path { fill: $cr4; }
+    &:hover {
+      height: 50px;
+      margin: 5px;
+      width: 50px;
+    }
+  }
+  .social { text-align: right; }
+  &.num-2, &.num-3 { .col-sm-4:nth-child(1) .social { text-align: left; } }
+  &.num-3 .col-sm-4:nth-child(2) .social { text-align: center; }
+}
+
+@media (max-width: 767px) {
+  #footer {
+    padding: 40px 0 80px;
+    text-align: center;
+    .col-sm-4 { padding: 10px 0; }
+    .social { text-align: center; }
+    .logo {
+      max-width: 100%;
+      width: auto;
+    }
+  }
+}

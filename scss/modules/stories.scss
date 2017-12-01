@@ -1,0 +1,80 @@
+@import "../options";
+
+.area-stories {
+  .row { margin: 60px -10px; }
+  &.search .row { margin: 0 -10px; }
+  .col-md-6 { padding: 20px 10px; }
+  .col-md-6:nth-child(2n-1) { clear: both; }
+  .title p {
+    color: $bg3;
+    font-size: 30px;
+    padding-bottom: 5px;
+  }
+  .img {
+    background: center no-repeat $bg4;
+    background-size: cover;
+    height: 300px;
+  }
+  .data {
+    background: $bg5;
+    color: $cr5;
+    line-height: 1.2;
+    margin: -40px 50px 0;
+    padding: 25px 30px;
+    position: relative;
+    text-align: left;
+    .name {
+      font-size: 25px;
+      font-weight: $wBold;
+      text-transform: uppercase;
+      div {
+        height: 3px;
+        margin: 15px 0;
+        width: 80px;
+      }
+    }
+    .meta {
+      font-size: 15px;
+      font-style: italic;
+      font-weight: $wMedium;
+      margin-top: 25px;
+    }
+    .ih-btn {
+      bottom: -20px;
+      position: absolute;
+      right: -25px;
+    }
+  }
+  button.addStory:not(.btn1) {
+    background: #fff !important;
+    border: 0 !important;
+    color: $cr5 !important;
+    cursor: pointer;
+    &:hover { opacity: .7; }
+  }
+}
+
+@media (max-width: 767px) and (min-width: 481px) {
+  .area-stories {
+    .name { font-size: 30px; }
+  }
+}
+
+@media (max-width: 767px) {
+  .area-stories {
+    .data { margin: -40px 25px 0; }
+  }
+}
+
+@media (max-width: 420px) {
+  .area-stories {
+    .img {
+      height: 200px;
+      margin: 0 -30px;
+    }
+    .data {
+      margin:  -40px -10px 0;
+      .ih-btn { right: 5px; }
+    }
+  }
+}

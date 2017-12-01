@@ -1,0 +1,74 @@
+@import "options";
+
+body.events-single {
+  #header, #headBlank { display: none; }
+  .area-event .arrow-l {
+    display: block;
+    height: 20px;
+    margin: -20px 30px 20px;
+    stroke: $bg1;
+  }
+}
+
+.area-event {
+  max-width: 1090px;
+  .container { max-width: 1010px; }
+  .icon {
+    background: center;
+    background-size: cover;
+    height: 300px;
+  }
+  .title div {
+    height: 3px;
+    margin: 15px auto;
+    width: 80px;
+  }
+  .widget { display: block; }
+  .row {
+    padding: 30px 15px;
+    a, h5 { color: $bg1; }
+  }
+  .tbl {
+    color: #fff;
+    line-height: 1;
+    word-break: break-word;
+    .col-sm-3 {
+      font-weight: $wMedium;
+      margin-bottom: 5px;
+      padding: 0;
+      .vc-mid {
+        background: $bg1;
+        height: 60px;
+        overflow: auto;
+      }
+    }
+    .col-sm-9 {
+      margin-bottom: 5px;
+      padding: 0 0 0 5px;
+      .vc-mid {
+        background: $bg4;
+        height: 60px;
+        overflow: auto;
+      }
+    }
+  }
+  .price {
+    border: 1px solid $bg4;
+    clear: both;
+    color: $bg1;
+    height: 60px;
+  }
+}
+
+@media (max-width: 600px) {
+  .area-event {
+    .tbl {
+      .col-sm-3 { margin: 0; }
+      .col-sm-3,.col-sm-9 {
+        font-size: 16px;
+        padding: 0;
+        width: 100%;
+      }
+    }
+  }
+}

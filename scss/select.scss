@@ -1,0 +1,54 @@
+@import "options";
+
+.bootstrap-select {
+  width: 100% !important;
+  button.dropdown-toggle,
+  button.dropdown-toggle:hover {
+    background: $bg5;
+    border: 0;
+    border-bottom: 3px solid $bg4;
+    border-radius: 0;
+    color: $cr5;
+    display: block;
+    font-weight: $wMedium;
+    height: 40px;
+    margin: 0;
+    padding: 0 8px;
+    text-align: center;
+    transition: .1s;
+    width: 100% !important;
+    &:focus { border: 3px solid $bg4; }
+    span {
+      font-size: 20px;
+      font-weight: 500;
+      margin: 0 !important;
+      text-align: center !important;
+    }
+    .caret {
+      background: url(../img/nav-arrow-b.svg) center no-repeat;
+      background-size: contain;
+      border: 0;
+      height: 100%;
+      margin: 0 !important;
+      top: 0 !important;
+      width: 12px;
+    }
+  }
+  .dropdown-menu {
+    border: 0;
+    border-radius: 0;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+    li a {
+      background: transparent !important;
+      color: inherit !important;
+      font-size: 16px;
+      font-weight: 500;
+      padding: 8px 10px;
+      &:not(:hover) { opacity: .5; }
+      span { margin: 0 !important; }
+    }
+  }
+  select { display: none !important; }
+}

@@ -1,0 +1,64 @@
+@import "../options";
+
+.area-team {
+  .row { margin: 0 -15px; }
+  .mod-content { margin-bottom: 30px; }
+  .item {
+    margin: 0;
+    padding: 20px 15px;
+    position: relative;
+    text-align: left;
+    .bg2,.bg1 {
+      height: 3px;
+      margin: 10px 0;
+      width: 80px;
+    }
+  }
+  .data { padding: 25px 0 25px 30px; }
+  .img {
+    background: center;
+    background-size: cover;
+    height: 180px;
+  }
+  .name {
+    font-size: 25px;
+    font-weight: $wBold;
+    line-height: 1;
+  }
+  .pos { font-size: 16px; }
+  .email { font-size: 12px; }
+  a > button {
+    bottom: 0;
+    left: 50%;
+    margin-left: -75px;
+    position: absolute;
+  }
+  .addTeam { margin-top: 60px; }
+}
+
+@media (max-width: 991px) {
+  .area-team .img { height: 200px; }
+}
+
+@media (max-width: 767px) and (min-width: 481px) {
+  .area-team {
+    .name { font-size: 30px; }
+    .pos { font-size: 20px; }
+    .email { font-size: 15px; }
+  }
+}
+
+@media (max-width: 480px) {
+  .area-team {
+    .col-xs-6 { width: 100%; }
+    .data { padding: 20px 0; }
+    a > button {
+      bottom: auto;
+      font-size: 14px;
+      font-weight: $wRegular;
+      left: auto;
+      margin: 0;
+      position: relative;
+    }
+  }
+}

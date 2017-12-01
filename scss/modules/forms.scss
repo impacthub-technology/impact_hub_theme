@@ -1,0 +1,66 @@
+@import "../options";
+
+.area-forms {
+  padding: 0;
+  text-align: right;
+  .gform_wrapper { display: none; }
+  form { margin-top: 40px; }
+  .vc-mid {
+    vertical-align: top;
+    width: 50%;
+    &.bg2 {
+      text-align: left;
+      vertical-align: middle;
+    }
+  }
+  .af-row {
+    padding: 60px 120px;
+    > div {
+      text-align: center;
+      width: 400px;
+    }
+  }
+  &.db {
+    display: block;
+    .vc-mid {
+      display: block;
+      width: 100%;
+    }
+    .af-row>div { margin: auto !important; }
+  }
+  .showForm button { opacity: 1 !important; }
+}
+
+@media (max-width: 1280px) {
+  .area-forms {
+    .af-row { padding: 50px 40px; }
+  }
+}
+
+@media (max-width: 960px) {
+  .area-forms {
+    display: block;
+    .af-row { padding: 40px 30px; }
+    .vc-mid {
+      display: block;
+      width: 100%;
+    }
+    .af-row>div {
+      margin: auto !important;
+      width: auto;
+    }
+  }
+}
+
+@media (max-width: 480px) {
+  .social svg {
+    height: 40px;
+    margin: 20px 10px 0;
+    width: 40px;
+    &:hover {
+      height: 50px;
+      margin: 15px 5px -5px;
+      width: 50px;
+    }
+  }
+}

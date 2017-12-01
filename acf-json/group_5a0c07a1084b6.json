@@ -1,0 +1,41 @@
+{
+    "key": "group_5a0c07a1084b6",
+    "title": "Example",
+    "fields": [
+        {
+            "key": "field_5a0c07af3fd78",
+            "label": "",
+            "name": "",
+            "type": "message",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "message": "<b class=\"mod-tt\">Select the template on the right and fill the form.<\/b>\r\n<div class=\"mod-example\"><img src=\"\" alt=\"\"><\/div>",
+            "new_lines": "wpautop",
+            "esc_html": 0
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "post_type",
+                "operator": "==",
+                "value": "modules"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": 1,
+    "description": "",
+    "modified": 1511527372
+}

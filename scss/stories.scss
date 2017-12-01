@@ -1,0 +1,20 @@
+@import "options";
+
+body.page-template-tpl-stories {
+  .area-stories {
+    .row { margin: 0 -10px; }
+    .addStory { margin-top: 40px; }
+  }
+  #pageMenu .title {
+    color: $cr6 !important;
+  }
+  .sortable {
+    padding: 10px 20px 20px;
+    text-align: center;
+  }
+  .bootstrap-select {
+    max-width: 100%;
+    width: 400px !important;
+    .dropdown-menu { z-index: 9; }
+  }
+}

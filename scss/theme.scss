@@ -1,0 +1,331 @@
+@import "options";
+@import "font";
+
+* {
+  color: inherit;
+  font-family: inherit;
+  font-size: inherit;
+  margin: 0 auto;
+  outline: none !important;
+  text-align: inherit;
+}
+
+body {
+  color: $bg4;
+  font-family: GTWalsheim, sans-serif;
+  font-size: 20px;
+  position: relative;
+  word-wrap: break-word;
+}
+
+body.of, body.ofp {
+  height: 100vh;
+  overflow: hidden;
+  #page {
+    height: 100vh;
+    overflow: hidden;
+  }
+}
+
+h1 {
+  font-size: 45px;
+  font-weight: $wBold;
+}
+h2 {
+  font-size: 35px;
+  font-weight: $wMedium;
+}
+h3 {
+  font-size: 35px;
+  font-weight: $wBold;
+}
+h4 {
+  font-size: 25px;
+  font-weight: $wBold;
+  text-transform: uppercase;
+}
+h5 {
+  font-size: 20px;
+  font-weight: $wMedium;
+}
+h6 {
+  font-size: 20px;
+  font-weight: $wRegular;
+}
+
+a, a:hover, a:focus { text-decoration: none; }
+
+.bg1 {background: $bg1}
+.bg2 {background: $bg2}
+.bg3 {background: $bg3}
+.bg4 {background: $bg4}
+.bg5 {background: $bg5}
+.bg6 {background: $bg6}
+
+.cr1 {background: $bg1}
+.cr2 {background: $bg2}
+.cr3 {background: $bg3}
+.cr4 {background: $bg4}
+.cr5 {background: $bg5}
+.cr6 {background: $bg6}
+
+.color-1 { background: #2FBACB; }
+.color-2 { background: #3A9B89; }
+.color-3 { background: #075A61; }
+.color-4 { background: #3890BF; }
+.color-5 { background: #093247; }
+.color-6 { background: #266383; }
+.color-7 { background: #404043; }
+.color-8 { background: #812926; }
+.color-9 { background: #B1C976; }
+.color-10 { background: #CA2C55; }
+.color-11 { background: #D95543; }
+.color-12 { background: #E95356; }
+.color-13 { background: #F0F0F0; }
+.color-14 { background: #EDA46C; }
+
+
+.clear { clear: both; }
+
+.v-mid {
+  display: table;
+  height: 100%;
+  text-align: center;
+  width: 100%;
+}
+
+.vc-mid {
+  display: table-cell;
+  vertical-align: middle;
+}
+
+.container {
+  max-width: 1090px;
+  padding: 0 30px;
+}
+
+.row {
+  margin-left: -30px;
+  margin-right: -30px;
+}
+
+.nowrap {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+#content {
+  overflow-x: hidden;
+  width: 100%;
+}
+
+#wpadminbar { z-index: 15; }
+
+.logo {
+  color: $cr4;
+  display: inline-block;
+  max-width: 290px;
+  vertical-align: top;
+  width: 100%;
+  .img {
+    vertical-align: top;
+    width: 80px;
+  }
+  img {
+    height: 80px;
+    line-height: 80px;
+    width: 80px;
+  }
+  .loc {
+    font-size: 28px;
+    font-weight: $wBold;
+    line-height: 1;
+    padding: 10px;
+    text-align: left;
+    vertical-align: bottom;
+    word-break: break-word;
+  }
+}
+
+.social {
+  text-align: center;
+  svg {
+    display: inline-block;
+    height: 60px;
+    margin: 20px;
+    vertical-align: middle;
+    width: 60px;
+    path {
+      fill: $bg4;
+      transition: .2s;
+    }
+    &:hover {
+      height: 84px;
+      margin: 8px;
+      width: 84px;
+    }
+  }
+}
+
+body .vc_general[class*="vc_btn"],
+.ih-btn {
+  background: $bg1;
+  border: 2px solid $bg1 !important;
+  border-radius: 0;
+  color: $cr1;
+  font-size: 16px;
+  font-weight: $wBold;
+  line-height: 1;
+  min-height: 40px;
+  padding: 0 12px;
+  text-transform: lowercase;
+  transition: .2s;
+  svg {
+    height: 16px;
+    margin-left: 50px;
+    stroke: $cr1;
+    vertical-align: middle;
+    width: 10px;
+  }
+  &:hover {
+    background: transparent;
+    color: $bg1;
+    svg { stroke: $bg1; }
+  }
+  &:focus { opacity: .8; }
+}
+
+.ih-input {
+  position: relative;
+  input {
+    background: $bg6;
+    border: 2px solid transparent;
+    border-bottom-color: $bg4;
+    color: $cr6;
+    font-size: 20px;
+    font-weight: $wMedium;
+    line-height: 1;
+    height: 40px;
+    padding: 0 8px;
+    text-align: center;
+    transition: .2s;
+    width: 100%;
+    &:focus { border-color: $bg4; }
+  }
+}
+
+.popup {
+  background: rgba($bg4,.8);
+  display: none;
+  height: 100%;
+  left: 0;
+  overflow: auto;
+  padding: 15px 0;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 90;
+  &.mdls {
+    padding: 40px 0;
+    text-align: center;
+    .times svg {
+      cursor: pointer;
+      height: 40px;
+    }
+    .p-arrow {
+      text-align: left;
+      svg {
+        height: 20px;
+        width: 10px;
+      }
+    }
+  }
+}
+
+[class*="area-"] {
+  padding: 60px 0;
+  position: relative;
+  text-align: center;
+}
+
+.mdls .title {
+  font-size: 35px;
+  font-weight: $wMedium;
+  line-height: 1;
+  text-align: center;
+  div {
+    height: 3px;
+    margin: 20px auto;
+    width: 80px;
+  }
+}
+
+.mod-content { max-width: 820px; }
+
+#content .vc_row:not([data-vc-full-width]) {
+  margin: auto;
+  max-width: 1060px;
+}
+
+.gi-animate {
+  display: block;
+  font-size: 21px;
+  width: 21px;
+  animation: spin 1s infinite linear;
+  -ms-animation: spin 1s infinite linear;
+  -webkit-animation: spinw 1s infinite linear;
+  -moz-animation: spinm 1s infinite linear;
+  &:not(.on) { display: none; }
+}
+@keyframes spin {
+  from { transform: scale(1) rotate(0deg);}
+  to { transform: scale(1) rotate(360deg);}
+}
+@-webkit-keyframes spinw {
+  from { -webkit-transform: rotate(0deg);}
+  to { -webkit-transform: rotate(360deg);}
+}
+@-moz-keyframes spinm {
+  from { -moz-transform: rotate(0deg);}
+  to { -moz-transform: rotate(360deg);}
+}
+
+
+
+@media (min-width: 992px) {
+  .container { width: 100%; }
+}
+
+@media (max-width: 782px) {
+  html[lang] { margin-top: 0 !important; }
+  body { font-size: 22px; }
+  #wpadminbar { display: none; }
+  [class*="area-"] { padding: 40px 0; }
+  .mdls .title { font-size: 45px; }
+}
+
+@media (max-width: 480px) {
+  .logo .loc { font-size: 20px; }
+  .mdls .title { font-size: 35px; }
+}
+
+
+@import "header";
+@import "footer";
+@import "page-menu";
+@import "search";
+@import "stories";
+@import "select";
+@import "single-post";
+@import "single-event";
+@import "gravity-forms";
+@import "./modules/slider";
+@import "./modules/actions";
+@import "./modules/numbers";
+@import "./modules/gallery";
+@import "./modules/stories";
+@import "./modules/forms";
+@import "./modules/team";
+@import "./modules/member";
+@import "./modules/events";
