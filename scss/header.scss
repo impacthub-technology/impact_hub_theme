@@ -59,7 +59,10 @@
       #toggle { margin: 0; }
     }
   }
-  &:not(.fixed) { top: auto !important; }
+  &:not(.fixed) {
+    top: auto !important;
+    ~ #headBlank { display: none; }
+  }
 }
 
 #mainNav {

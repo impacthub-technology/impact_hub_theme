@@ -104,4 +104,7 @@
     #page .bgc5 {color:<?= bg5; ?>!important;}
     #page .bgc6 {color:<?= bg6; ?>!important;}
 
+    <?php if ( palette ) { ?>
+    #page #footer { background: #292929 !important;}
+    <?php } ?>
 </style>

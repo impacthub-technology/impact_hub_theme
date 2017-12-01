@@ -35,6 +35,7 @@ function getSocial () {
 
 	$social = get_field('social_links','options');
 	$list = '';
+	if ( empty($social) ) return '';
 	foreach ( $social as $key ) {
 		$img = ( substr($key['icon'],-4) === '.svg' ) ? _svg($key['icon'],true) : '<img src="'. $key['icon'] .'" alt="">';
 		$list .= '<a href="'. $key['link'] .'" target="_blank">'. $img .'</a>';
@@ -114,6 +115,12 @@ function getMainNav () {
 	}
 
 	return $nav;
+}
+
+function getLang () {
+	$count = apply_filters( 'wpml_active_languages', null, '' );
+	if ( !is_array($count) or count($count) < 2 ) return '';
+	return '<div id="lang_area">' . do_shortcode('[wpml_language_switcher flags=1 native=0 translated=0][/wpml_language_switcher]') . '</div>';
 }
 
 function svg ( $url ) {

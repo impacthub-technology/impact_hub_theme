@@ -17,7 +17,7 @@ function create_post_type() {
 			],
 			'public' => false,
 			'show_ui' => true,
-			'menu_icon' => 'dashicons-layout',
+			'menu_icon' => THEME_URL . '/img/sidebar_IH_white.png',
 			'menu_position' => 2,
 			'exclude_from_search' => true,
 			'supports' => [ 'title' ]

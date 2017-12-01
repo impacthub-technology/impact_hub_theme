@@ -42,7 +42,7 @@ jQuery(window).load(function(){
         if ( st > 200 ) $('#search').hide();
         $('#header').toggleClass('scroll',st > 200).css('top', ah );
         if ( $('#pageMenu').length < 1 ) return;
-        $('#pageMenu .icon, #pageMenu .title').toggleClass( 'ib', st > 80 );
+        $('#pageMenu .icon, #pageMenu .title').toggleClass( 'ib', st > 110 );
         $('#pageMenu .icon').toggleClass( 'hidden', st > 200 );
         pmNav();
     }
@@ -54,8 +54,11 @@ jQuery(window).load(function(){
                 $('#headBlank').css('height', $('#header').outerHeight());
             },100);
         },200);
-
     }
+
+    setInterval(function(){
+        if ( st < 111 ) $('#headBlank').css('height', $('#header').outerHeight());
+    },1000);
 
     pmNav();
 
@@ -74,6 +77,15 @@ jQuery(window).load(function(){
         if ( $(event.target).closest('#mainNav').length < 1 && $(event.target).closest('#toggle').length < 1 ) {
             $('body').removeClass('of');
             $('#mainNav').removeClass('on');
+        }
+    });
+
+    $('#lang_area a').click(function(e){
+        console.log(123);
+        var a = $(this).closest('#lang_area');
+        if ( !a.hasClass('active') ) {
+            e.preventDefault();
+            a.toggleClass('active');
         }
     });
 
