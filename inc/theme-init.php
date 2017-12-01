@@ -24,9 +24,10 @@ class socialLinks extends WP_Widget {
 	function widget( $args, $instance ) {
 		echo getSocial();
 	}
-	function form () {}
-	function update() {}
+	function form ( $instance ) {}
+	function update($new_instance, $old_instance) {}
 }
+
 class siteLogo extends WP_Widget {
 	function __construct() {
 		parent::__construct( 'siteLogo', 'Logo' );
@@ -34,8 +35,8 @@ class siteLogo extends WP_Widget {
 	public function widget( $args, $instance ) {
 		echo getLogo( false );
 	}
-	function form () {}
-	function update() {}
+	function form ( $instance ) {}
+	function update( $new_instance, $old_instance ) {}
 
 }
 
