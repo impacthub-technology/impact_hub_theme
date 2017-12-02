@@ -24,18 +24,19 @@ class socialLinks extends WP_Widget {
 	function widget( $args, $instance ) {
 		echo getSocial();
 	}
-	function form () {}
-	function update() {}
+	function form ( $instance ) {}
+	function update( $new_instance = null, $old_instance= null) {}
 }
+
 class siteLogo extends WP_Widget {
 	function __construct() {
 		parent::__construct( 'siteLogo', 'Logo' );
 	}
-	public function widget( $args, $instance ) {
+	public function widget( $args= null, $instance= null ) {
 		echo getLogo( false );
 	}
-	function form () {}
-	function update() {}
+	function form ( $instance= null ) {}
+	function update( $new_instance= null, $old_instance= null ) {}
 
 }
 
