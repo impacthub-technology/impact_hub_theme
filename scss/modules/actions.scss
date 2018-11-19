@@ -5,9 +5,18 @@
   .owl-carousel { margin-top: 60px; }
   .item { padding: 10px; }
   .icon {
-    background: center no-repeat;
-    background-size: contain;
     height: 120px;
+    img {
+      display: block;
+      height: auto;
+      max-height: 120px;
+      width: auto;
+    }
+    svg {
+      display: block;
+      height: 100%;
+      width: 100%;
+    }
   }
   .name {
     font-size: 25px;

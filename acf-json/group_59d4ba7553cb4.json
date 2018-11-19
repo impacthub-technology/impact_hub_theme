@@ -58,22 +58,6 @@
             "delay": 0
         },
         {
-            "key": "field_5a12f51518466",
-            "label": "JSON Link",
-            "name": "json_link",
-            "type": "url",
-            "instructions": "",
-            "required": 0,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "default_value": "",
-            "placeholder": ""
-        },
-        {
             "key": "field_59d4ba9fe6753",
             "label": "Blocks",
             "name": "blocks",
@@ -97,7 +81,7 @@
                     "label": "Image",
                     "name": "image",
                     "type": "image",
-                    "instructions": "",
+                    "instructions": "Aspect ratio 1x1<br>\r\nWidth less than 250px",
                     "required": 0,
                     "conditional_logic": 0,
                     "wrapper": {
@@ -139,7 +123,7 @@
                     "key": "field_59d4babce6756",
                     "label": "Subtitle",
                     "name": "subtitle",
-                    "type": "text",
+                    "type": "textarea",
                     "instructions": "",
                     "required": 0,
                     "conditional_logic": 0,
@@ -150,9 +134,9 @@
                     },
                     "default_value": "",
                     "placeholder": "",
-                    "prepend": "",
-                    "append": "",
-                    "maxlength": ""
+                    "maxlength": "",
+                    "rows": 4,
+                    "new_lines": "br"
                 },
                 {
                     "key": "field_5a12ebf79433b",
@@ -200,5 +184,5 @@
     "hide_on_screen": "",
     "active": 1,
     "description": "",
-    "modified": 1511527351
+    "modified": 1516718925
 }

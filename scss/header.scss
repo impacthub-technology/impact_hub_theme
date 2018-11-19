@@ -74,33 +74,36 @@
     margin: 0;
     padding: 0;
   }
-  li {
-    display: inline-block;
-    margin: 0 3px;
-    position: relative;
-    &.has-child:after {
-      background: url(../img/arrow-b.svg) center no-repeat;
-      background-size: contain;
-      content: '';
-      height: 7px;
-      left: 50%;
-      margin: -1px 0 0 -7px;
-      position: absolute;
-      top: 100%;
-      width: 14px;
+  .main {
+    li {
+      display: inline-block;
+      margin: 0 3px;
+      position: relative;
+      &.has-child:after {
+        background: url(../img/arrow-b.svg) center no-repeat;
+        background-size: contain;
+        content: '';
+        height: 7px;
+        left: 50%;
+        margin: -1px 0 0 -7px;
+        position: absolute;
+        top: 100%;
+        width: 14px;
+      }
     }
+    a {
+      border: 2px solid transparent;
+      color: $cr4;
+      display: block;
+      font-size: 16px;
+      font-weight: $wMedium;
+      line-height: 1;
+      padding: 10px;
+      transition: .2s;
+      span { display: none }
+    }
+    :not(.sub-menu) a:hover, :not(.sub-menu) .current a { border-color: $cr4; }
   }
-  a {
-    border: 2px solid transparent;
-    color: $cr4;
-    display: block;
-    font-size: 16px;
-    font-weight: $wMedium;
-    line-height: 1;
-    padding: 10px;
-    transition: .2s;
-  }
-  :not(.sub-menu) a:hover, :not(.sub-menu) .current a { border-color: $cr4; }
 }
 
 #preloader {
@@ -140,7 +143,7 @@
     > .searchBtn { display: none; }
     .pull-right {
       text-align: right;
-      width: calc(100% - 300px);
+      width: calc(100% - 400px);
     }
     #mainNav { width: calc(100% - 90px) }
   }
@@ -251,16 +254,22 @@
           padding: 50px 30px 50px 140px;
           position: relative;
           span {
-            background: center no-repeat;
-            background-size: contain;
+            display: block;
             height: 50px;
             left: 10px;
             margin-top: -25px;
             position: absolute;
             top: 50%;
             width: 120px;
+            svg {
+              fill: #404043;
+              display: block;
+              height: 100%;
+              width: 100%;
+            }
           }
         }
+        &.mob a span svg { fill: $cr4 }
       }
     }
     .sub-menu {

@@ -8,7 +8,7 @@ function moduleStories($id) {
 
 	$stories = '';
 	$i = $count = (int)get_field('stories_count',$id);
-	$order = ( get_field('sortable',$id) == 'ASC' ) ? 'ASC' : 'DESC';
+	$order = ( get_field('sortable',$id) == 'DESC' ) ? 'ASC' : 'DESC';
 
 	$title = get_field('title',$id);
 	$sub = get_field('subtitle',$id);
@@ -31,9 +31,9 @@ function moduleStories($id) {
 		$stories .= '<div class="col-md-6" data-test="">
 			<div class="img" style="background-image:url('. get_the_post_thumbnail_url($key->ID,'full') .')"></div>
 			<div class="data">
-				<div class="name">'. $key->post_title .'<div class="bg1"></div></div>			
+				<div class="name"><a href="'. get_permalink($key->ID) .'">'. $key->post_title .'<div class="bg1"></div></a></div>			
 				'. $excerpt .'		
-				<div class="meta bgc'.$pal[2].'">'. get_the_date( 'd/m/Y', $key ) .' - '. get_the_author_meta('display_name',$key->post_author) .'</div>
+				<div class="meta '.$pal[2].'">'. get_the_date( $format, $key ) .' | '. get_the_author_meta('display_name',$key->post_author) .'</div>
 				<a href="'. get_permalink($key->ID) .'"><button class="ih-btn btn'.$pal[2].'">view'. arrowR .'</button></a>		
 			</div>
         </div>';
