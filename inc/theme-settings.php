@@ -17,7 +17,7 @@ function create_post_type() {
 			],
 			'public' => false,
 			'show_ui' => true,
-			'menu_icon' => THEME_URL . '/img/sidebar_IH_white.png',
+			'menu_icon' => THEME_URL . '/img/modules-dashicon.svg',
 			'menu_position' => 2,
 			'exclude_from_search' => true,
 			'supports' => [ 'title' ]
@@ -46,6 +46,16 @@ function themeModules( $atts ){
 	$func = 'module'. ucfirst(substr($tpl,8,-4));
 	return ( function_exists($func) ) ? $func($id) : '';
 }
+
+add_shortcode('json', function ( $atts ) {
+    if ( !isset($atts['type']) ) return '';
+	switch ( $atts['type'] ) {
+		case 'members': return jsonMembers;
+		case 'locations': return jsonLocations;
+		case 'makers': return jsonMakers;
+	}
+	return '';
+});
 
 
 add_filter('manage_modules_posts_columns', 'module_columns_head');
@@ -95,11 +105,29 @@ function getDateSF ( $s, $f ) {
 	$start = date_create($s);
 	$end = date_create($f);
 
-	$_start = [ date_format( $start, 'F' ), date_format( $start, 'g:i a' ) ];
-	$_end = [ date_format( $end, 'F' ), date_format( $end, 'g:i a' ) ];
+	$_start = [ date_format( $start, 'F j' ), date_format( $start, 'g:i a' ) ];
+	$_end = [ date_format( $end, 'F j' ), date_format( $end, 'g:i a' ) ];
 
 	$date = $_start[0] .' | '. $_start[1] .' to '. $_end[1];
-	if ( date_format( $start, 'Y/m/d' ) != date_format( $end, 'Y/m/d' ) ) $date = $_start[0] .' | '. $_start[1] .' to<br>'. $_end[0] .' | '. $_end[1];
+	if ( date_format( $start, 'Y/m/d' ) != date_format( $end, 'Y/m/d' ) ) $date = $_start[0] .' | '. $_start[1] .'<br>to '. $_end[0] .' | '. $_end[1];
 
 	return $date;
 }
+
+
+
+function changeColor ( $rgb, $darker = 1.5 ) {
+	$hash = (strpos($rgb, '#') !== false) ? '#' : '';
+	$rgb = (strlen($rgb) == 7) ? str_replace('#', '', $rgb) : ((strlen($rgb) == 6) ? $rgb : false);
+	if(strlen($rgb) != 6) return $hash.'000000';
+	$darker = ($darker > 1) ? $darker : 1;
+
+	list($R16,$G16,$B16) = str_split($rgb,2);
+
+	$R = sprintf("%02X", floor(hexdec($R16)/$darker));
+	$G = sprintf("%02X", floor(hexdec($G16)/$darker));
+	$B = sprintf("%02X", floor(hexdec($B16)/$darker));
+
+	return $hash.$R.$G.$B;
+}
+
