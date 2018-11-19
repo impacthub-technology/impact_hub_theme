@@ -16,7 +16,10 @@
     max-width: 380px;
   }
   .val { font-size: 70px; }
-  .key { font-style: italic; }
+  .key {
+    font-style: italic;
+    line-height: 1.1;
+  }
   .owl-nav {
     left: 0;
     margin-top: -10px;

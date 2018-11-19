@@ -12,6 +12,11 @@
     width: 100%;
     z-index: 1;
   }
+  .title {
+    font-size: 45px;
+    font-weight: $wBold;
+    margin-bottom: 20px;
+  }
   .item {
     background: center #333;
     background-size: cover;
@@ -22,7 +27,7 @@
     position: relative;
   }
   .vc-mid {
-    padding-right: calc(100% - 410px);
+    padding-right: calc(100% - 800px) !important;
     position: relative;
     text-align: left;
     vertical-align: bottom;
@@ -55,6 +60,7 @@
   .area-slider {
     .vc-mid { padding-right: 0; }
     .item:after { height: 300px; }
+    .title { font-size: 32px }
     .item {
       height: 600px;
       padding: 30px 50px 30px 0;
