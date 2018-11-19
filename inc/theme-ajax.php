@@ -6,34 +6,32 @@ function ajaxStory () {
 	$pal = ( palette ) ? 1 : 2;
 
 	$order = ( $_POST['order'] == 'ASC' ) ? 'ASC' : 'DESC';
-	$stories = '';
 
-	$agrs = [ 'numberposts' => 2, 'orderby' => 'date', 'order' => $order, 'offset' => (int)$_POST['num'] ];
-	if ( (int)$_POST['cat'] > 0 ) $agrs['category'] = (int)$_POST['cat'];
+	$args = [
+		'posts_per_page' => 2,
+		'orderby' => 'date',
+		'order' => $order,
+		'offset' => (int)$_POST['num']
+	];
 
-	$posts = get_posts( $agrs );
+	if ( (int)$_POST['cat'] > 0 )
+		$args['category'] = (int)$_POST['cat'];
 
-	foreach ( $posts as $key ) {
+	$the_query = new WP_Query( $args );
+	set_query_var( 'pal', $pal );
 
-		$excerpt = $key->post_excerpt;
-		if ( trim($excerpt) == '' ) {
-			$excerpt = substr(trim(strip_tags($key->post_content)),0,150);
-			$temp = explode(' ',$excerpt);
-			array_pop($temp);
-			$excerpt = implode(' ',$temp);
+	ob_start();
+	if ( $the_query->have_posts() ) {
+		while ( $the_query->have_posts() ) {
+			$the_query->the_post();
+			get_template_part('templates/post','summary');
 		}
-
-		$stories .= '<div class="col-md-6">
-			<div class="img" style="background-image:url('. get_the_post_thumbnail_url($key->ID,'full') .')"></div>
-			<div class="data">
-				<div class="name">'. $key->post_title .'<div class="bg1"></div></div>			
-				'. $excerpt .'		
-				<div class="meta bgc'.$pal.'">'. get_the_date( $format, $key ) .' | '. get_the_author_meta('display_name',$key->post_author) .'</div>	
-				<a href="'. get_permalink($key->ID) .'"><button class="ih-btn btn'.$pal.'">view'. arrowR .'</button></a>		
-			</div>
-        </div>';
-
 	}
+	wp_reset_postdata();
+
+	$stories = ob_get_clean();
+	$stories .= $_POST['num'];
+
 	die($stories);
 }
 
