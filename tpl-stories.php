@@ -8,10 +8,9 @@ $id = get_the_ID();
 $stories = '';
 $i = $count = (int)get_field('stories_count',$id);
 $order = ( get_field('sortable',$id) == 'ASC' ) ? 'ASC' : 'DESC';
-if ( $_COOKIE['blogSort'] == 'ASC' ) $order = 'ASC';
-if ( $_COOKIE['blogSort'] == 'DESC' ) $order = 'DESC';
+if ( isset($_COOKIE['blogSort']) and $_COOKIE['blogSort'] == 'ASC' ) $order = 'ASC';
+if ( isset($_COOKIE['blogSort']) and $_COOKIE['blogSort'] == 'DESC' ) $order = 'DESC';
 
-$_cat = ( isset($_COOKIE['blogCat']) ) ? htmlspecialchars($_COOKIE['blogCat']) : '';
 $cat = ( isset($_COOKIE['blogCat']) and $_COOKIE['blogCat'] != 'all' ) ? get_category_by_slug($_COOKIE['blogCat'])->term_id : 0;
 
 $agrs = [ 'numberposts' => $count, 'orderby' => 'date', 'order' => $order, 'suppress_filters' => false ];
@@ -24,13 +23,13 @@ $title = get_field('title',$id);
 $sub = get_field('subtitle',$id);
 if ( $sub != '' ) $title .= '<p class="bgc2">'. $sub .'</p>';
 if ( $title != '' ) $title = '<div class="title">'. $title .'<div class="bg2"></div></div>';
+
 ?>
 
 <div class="sortable bg<?= $pal; ?>">
-	<p>Sort by</p>
 	<select id="sortable">
-		<option value="DESC">From New to Old</option>
-		<option value="ASC" <?= $sel; ?>>From Old to New</option>
+		<option value="DESC">Show newest first</option>
+		<option value="ASC" <?= $sel; ?>>Show oldest first</option>
 	</select>
 </div>
 
@@ -55,7 +54,7 @@ if ( $title != '' ) $title = '<div class="title">'. $title .'<div class="bg2"></
 						<div class="data">
 							<div class="name"><?= $key->post_title; ?><div class="bg1"></div></div>
 							<?= $excerpt; ?>
-							<div class="meta bgc<?= $pal; ?>"><?= get_the_date( 'd/m/Y', $key ) .' - '. get_the_author_meta('display_name',$key->post_author); ?></div>
+							<div class="meta bgc<?= $pal[2]; ?>"><?= get_the_date( $format, $key ) .' | '. get_the_author_meta('display_name',$key->post_author); ?></div>
 							<a href="<?= get_permalink($key->ID); ?>"><button class="ih-btn btn<?= $pal; ?>">view<?= arrowR; ?></button></a>
 						</div>
 					</div>
@@ -66,10 +65,11 @@ if ( $title != '' ) $title = '<div class="title">'. $title .'<div class="bg2"></
 	</div>
 </section>
 
+<?php the_content(); ?>
+
 <script>
 jQuery(document).ready(function($){
     stories[<?= $id; ?>] = [<?= $count; ?>,"<?= $order; ?>",<?= $cat; ?>];
-    $('#pageMenu a[href="<?= home_url('/category/') . $_cat; ?>/"]').addClass('current');
 });
 </script>
 
