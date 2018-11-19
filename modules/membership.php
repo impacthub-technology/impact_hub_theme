@@ -34,7 +34,7 @@ function moduleMembership($id) {
 
 
 
-	if ( $title != '' ) $title = '<div class="title">'. $title .'<div class="bg4"></div></div>';
+	if ( $title != '' ) $title = '<div class="title">'. $title .'<div class="bg'.$pal.'"></div></div>';
 
 	for ( $i = 0; $i < count($headers); $i++ ) $head .= '<div><div class="v-mid"><div class="vc-mid">'. $headers[$i]['title'] .'</div></div></div>';
 
@@ -42,7 +42,7 @@ function moduleMembership($id) {
 		$sub = ( trim($values[$i]['price_sub']) == '' ) ? '' : '<div>'. $values[$i]['price_sub'] .'</div>';
 		$body .= '<div class="item">' . '<div class="name">'. $values[$i]['title'] .'<div class="bg4"></div></div>';
 		for ( $a = 0; $a < count($values[$i]['values']); $a++ ) $body .= '<div class="v-mid"><div class="vc-mid">'. getMemberVal($values[$i]['values'][$a]) .'</div></div>';
-		$body .= '<div class="v-mid price"><div class="vc-mid">'. $values[$i]['price'] . $sub .'</div></div>';
+		if ( $values[$i]['price'] != '' ) $body .= '<div class="v-mid price"><div class="vc-mid">'. $values[$i]['price'] . $sub .'</div></div>';
 		$body .= '<div class="fbtn"><a href="'. $link .'"><button class="ih-btn btn4">'. $button . arrowR .'</button></a></div>';
 		$body .= '</div>';
 	}

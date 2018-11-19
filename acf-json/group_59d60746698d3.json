@@ -81,7 +81,7 @@
                     "label": "Image",
                     "name": "image",
                     "type": "image",
-                    "instructions": "",
+                    "instructions": "Aspect ratio 2x1.<br>\r\nWidth less than 1200px.",
                     "required": 0,
                     "conditional_logic": 0,
                     "wrapper": {
@@ -158,5 +158,5 @@
     "hide_on_screen": "",
     "active": 1,
     "description": "",
-    "modified": 1511527371
+    "modified": 1516047670
 }

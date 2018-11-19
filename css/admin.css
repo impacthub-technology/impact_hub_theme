@@ -122,9 +122,20 @@ li[id*="customize-control-color_font"] span:nth-child(4) label { background: #00
 
 .vc_ui-panel[data-vc-shortcode="vc_section"] input[name="row-color"],
 .vc_ui-panel[data-vc-shortcode="vc_section"] [data-vc-shortcode-param-name="row-color"] li span:first-child,
-.vc_ui-panel[data-vc-shortcode="vc_section"] [data-vc-shortcode-param-name="el_class"] { display: none; }
+.vc_ui-panel[data-vc-shortcode="vc_section"] [data-vc-shortcode-param-name="el_class"],
+.vc_ui-panel[data-vc-shortcode="vc_row"] input[name="_row-text-color"],
+.vc_ui-panel[data-vc-shortcode="theme_button"] input[name="color"],
+.vc_ui-panel[data-vc-shortcode="theme_underline"] input[name="color"],
+.vc_ui-panel[data-vc-shortcode="theme_underline"] input[name="line"],
+.vc_ui-panel[data-vc-shortcode="vc_row"] [data-vc-shortcode-param-name="el_class"] { display: none; }
 
 .vc_ui-panel[data-vc-shortcode="vc_section"] [data-vc-shortcode-param-name="row-color"] li {
     display: block;
     margin-bottom: 40px;
+}
+
+label[for="page_for_posts"],
+li#customize-control-page_for_posts,
+body.nav-menus-php ul.menu li:not(.menu-item-depth-0) .field-acf {
+    display: none !important;
 }

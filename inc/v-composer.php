@@ -1,5 +1,59 @@
 <?php
 
+define( '_bg1', get_theme_mod( 'color_bg_1', '#075A61' ) );
+define( '_bg2', get_theme_mod( 'color_bg_2', '#3A9B89' ) );
+define( '_bg3', get_theme_mod( 'color_bg_3', '#CA2C55' ) );
+
+$rowColor = '<li id="customize-control-color_bg" class="fontColor">
+		<span><input id="rowc-1" name="row-text-color" type="radio" value="bgc1"><label for="rowc-1"></label></span>
+		<span><input id="rowc-2" name="row-text-color" type="radio" value="bgc2"><label for="rowc-2"></label></span>
+		<span><input id="rowc-3" name="row-text-color" type="radio" value="bgc3"><label for="rowc-3"></label></span>
+		<span><input id="rowc-4" name="row-text-color" type="radio" value="bgc5"><label for="rowc-4"></label></span>
+		<span><input id="rowc-5" name="row-text-color" type="radio" value="bgc4"><label for="rowc-5"></label></span>
+	</li>
+	<style>
+	li[id*="customize-control-color_"].fontColor {display:block;min-height:50px}
+	li[id*="customize-control-color_"].fontColor span:nth-child(1) label {background:' . _bg1 . '}
+	li[id*="customize-control-color_"].fontColor span:nth-child(2) label {background:' . _bg2 . '}
+	li[id*="customize-control-color_"].fontColor span:nth-child(3) label {background:' . _bg3 . '}
+	li[id*="customize-control-color_"].fontColor span:nth-child(4) label {background:' . bg5 . '}
+	li[id*="customize-control-color_"].fontColor span:nth-child(5) label {background:' . bg4 . '}
+	</style>
+	';
+
+$lineColor = '<li id="customize-control-color_bg" class="fontColor">
+		<span><input id="linec-1" name="line-color" type="radio" value="bg1"><label for="linec-1"></label></span>
+		<span><input id="linec-2" name="line-color" type="radio" value="bg2"><label for="linec-2"></label></span>
+		<span><input id="linec-3" name="line-color" type="radio" value="bg3"><label for="linec-3"></label></span>
+		<span><input id="linec-4" name="line-color" type="radio" value="bg5"><label for="linec-4"></label></span>
+		<span><input id="linec-5" name="line-color" type="radio" value="bg4"><label for="linec-5"></label></span>
+	</li>
+	<style>
+	li[id*="customize-control-color_"].fontColor {display:block;min-height:50px}
+	li[id*="customize-control-color_"].fontColor span:nth-child(1) label {background:' . _bg1 . '}
+	li[id*="customize-control-color_"].fontColor span:nth-child(2) label {background:' . _bg2 . '}
+	li[id*="customize-control-color_"].fontColor span:nth-child(3) label {background:' . _bg3 . '}
+	li[id*="customize-control-color_"].fontColor span:nth-child(4) label {background:' . bg5 . '}
+	li[id*="customize-control-color_"].fontColor span:nth-child(5) label {background:' . bg4 . '}
+	</style>
+	';
+
+$btnColor = '<li id="customize-control-color_bg" class="btnColor">
+		<span><input id="btnc-1" name="btn-color" type="radio" value="btn1"><label for="btnc-1"></label></span>
+		<span><input id="btnc-2" name="btn-color" type="radio" value="btn2"><label for="btnc-2"></label></span>
+		<span><input id="btnc-3" name="btn-color" type="radio" value="btn3"><label for="btnc-3"></label></span>
+		<span><input id="btnc-4" name="btn-color" type="radio" value="btn4"><label for="btnc-4"></label></span>
+	</li>
+	<style>
+	li[id*="customize-control-color_"].btnColor {display:block;min-height:50px}
+	li[id*="customize-control-color_"].btnColor span:nth-child(1) label {background:' . _bg1 . '}
+	li[id*="customize-control-color_"].btnColor span:nth-child(2) label {background:' . _bg2 . '}
+	li[id*="customize-control-color_"].btnColor span:nth-child(3) label {background:' . _bg3 . '}
+	li[id*="customize-control-color_"].btnColor span:nth-child(4) label {background:' . bg4 . '}
+	</style>
+	';
+
+
 foreach ( scandir( THEME_DIR . '/modules') as $key ) {
 	if ( strlen($key) > 2 and is_readable(THEME_DIR . '/modules/' . $key) ) add_shortcode( 'vc_module_'. substr($key,0,-4), 'vc_module_sc' );
 }
@@ -8,6 +62,8 @@ add_shortcode( 'theme_social', 'vc_theme_social' );
 add_shortcode( 'theme_underline', 'vc_theme_underline' );
 
 add_action( 'init', function () {
+
+	global $rowColor, $btnColor, $lineColor;
 
 	$titles = [
 		'actions' => 'Impact Hub Main Actions Module',
@@ -56,6 +112,7 @@ add_action( 'init', function () {
 
 	}
 
+
 	vc_map(
 		array(
 			'name' => 'Theme Button',
@@ -65,8 +122,9 @@ add_action( 'init', function () {
 			'params' => [
 				[
 					'param_name' => 'color',
-					'type' => 'dropdown',
-					'value' => [ 'Select Color' => '', 'Color 1' => 'btn1', 'Color 2' => 'btn2', 'Color 3' => 'btn3', 'Color Gray' => 'btn4' ]
+					'type' => 'textfield',
+					'heading' => "Button Color",
+					'description' => $btnColor,
 				],
 				[
 					'param_name' => 'arrow',
@@ -87,7 +145,8 @@ add_action( 'init', function () {
 			'name' => 'Social Button',
 			'base' => 'theme_social',
 			'icon' => THEME_URL.'/img/favicon.png',
-			'category' => 'Impact Hub Modules'
+			'category' => 'Impact Hub Modules',
+			'description' => 'This module has no parameters.'
 		)
 	);
 
@@ -105,8 +164,15 @@ add_action( 'init', function () {
 				],
 				[
 					'param_name' => 'color',
-					'type' => 'dropdown',
-					'value' => [ 'Select Color' => '', 'Color 1' => 'bg1', 'Color 2' => 'bg2', 'Color 3' => 'bg3', 'Color Gray' => 'bg4' ]
+					'type' => 'textfield',
+					'heading' => "Text Color",
+					'description' => $rowColor
+				],
+				[
+					'param_name' => 'line',
+					'type' => 'textfield',
+					'heading' => "Line Color",
+					'description' => $lineColor
 				]
 			]
 		)
@@ -130,7 +196,7 @@ function vc_theme_social( $atts ) {
 }
 
 function vc_theme_underline( $atts ) {
-	return '<div class="mdls"><div class="title">'. $atts['title'] .'<div class="'. $atts['color'] .'"></div></div></div>';
+	return '<div class="mdls"><div class="title '. $atts['color'] .'">'. $atts['title'] .'<div class="'. $atts['line'] .'"></div></div></div>';
 }
 
 
@@ -155,13 +221,18 @@ $colorsHTML = '<li id="customize-control-color_bg">
 	'. $colorsHTML .'<div class="clear"></div>
 </li>';
 
-
-$colors = [ '2FBACB', '3A9B89', '075A61', '3890BF', '093247', '266383', '404043', '812926', 'B1C976', 'CA2C55', 'D95543', 'E95356', 'F0F0F0', 'EDA46C' ];
 $vc_section = array(
 	'type' => 'textfield',
 	'heading' => "Background",
 	'param_name' => 'row-color',
 	'description' => $colorsHTML
-	#'value' => [ 'Select Color' => '' ]
 );
 vc_add_param( 'vc_section', $vc_section );
+
+
+vc_add_param( 'vc_row', array(
+	'type'        => 'textfield',
+	'heading'     => "Text Color",
+	'param_name'  => '_row-text-color',
+	'description' => $rowColor
+) );
