@@ -68,9 +68,7 @@ function getFText () {
 
 function getPageMenu () {
 
-	$pageMenu = get_field('page_menu');
-	if ( !isset($pageMenu[0]) ) return;
-	include THEME_DIR . '/inc/page-menu.php';
+	include THEME_DIR . '/inc/second-menu.php';
 
 }
 
@@ -100,7 +98,9 @@ function getMainNav () {
 
 		$nav .= '<li class="'. $class .'">';
 
-		$nav .= '<a href="'. $key->url .'"><span style="background-image:url('. get_field('icon',$key->ID) .')"></span>'. $key->title .'<i class="ar"></i></a>';
+		$nav .= '<a href="'. $key->url .'">
+				<span>'. _svg(get_field('icon',$key->ID),true) .'</span>
+			'. $key->title .'<i class="ar"></i></a>';
 
 		if ( !empty($key->submenu) ) {
 			$nav .= '<ul class="sub-menu">';
@@ -123,10 +123,24 @@ function getLang () {
 	return '<div id="lang_area">' . do_shortcode('[wpml_language_switcher flags=1 native=0 translated=0][/wpml_language_switcher]') . '</div>';
 }
 
+
+function is_url_exists ($url) {
+	$ch = curl_init($url);
+	curl_setopt($ch, CURLOPT_NOBODY, true);
+	curl_exec($ch);
+	$code = curl_getinfo($ch, CURLINFO_HTTP_CODE);
+	curl_close($ch);
+	if ( $code == 200 ) return true;
+	return false;
+}
+
+
 function svg ( $url ) {
-	include THEME_DIR . '/img/'. $url .'.svg';
+	$file = THEME_DIR . '/img/'. $url .'.svg';
+	if ( file_exists($file) ) include $file;
 }
 function _svg ( $url, $path = false ) {
-	$dir = ( $path ) ? $url : THEME_DIR .'/img/'. $url .'.svg';
-	return file_get_contents($dir);
+	$file = ( $path ) ? $url : THEME_DIR .'/img/'. $url .'.svg';
+	if ( substr($file,-4) != '.svg' ) return '<img src="'. $file .'" alt="">';
+	if ( is_url_exists($file) ) return file_get_contents($file);
 }
