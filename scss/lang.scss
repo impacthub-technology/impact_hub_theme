@@ -35,28 +35,3 @@
     }
   }
 }
-
-@media (max-width: 1200px) {
-  #mainNav #lang_area {
-    background: $bg4;
-    padding: 20px 20px 20px 30px;
-    position: relative;
-    right: auto;
-    top: auto;
-    li {
-      display: inline-block !important;
-      height: 12px;
-      left: auto !important;
-      margin-right: 20px;
-      opacity: 1;
-      padding: 0;
-      position: relative !important;
-      top: 0 !important;
-      width: 18px;
-      a {
-        border: 0 !important;
-        padding: 0;
-      }
-    }
-  }
-}

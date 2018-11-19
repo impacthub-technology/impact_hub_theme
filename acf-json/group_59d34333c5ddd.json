@@ -112,11 +112,11 @@
                     "label": "Image",
                     "name": "image",
                     "type": "image",
-                    "instructions": "Width more than 1920px<br>\r\nHeight more than 480px",
+                    "instructions": "",
                     "required": 0,
                     "conditional_logic": 0,
                     "wrapper": {
-                        "width": "35",
+                        "width": "40",
                         "class": "",
                         "id": ""
                     },
@@ -132,23 +132,20 @@
                     "mime_types": ""
                 },
                 {
-                    "key": "field_5a5ccfccc8157",
-                    "label": "Title",
-                    "name": "title",
-                    "type": "text",
+                    "key": "field_59d4b768c8c74",
+                    "label": "Button Link",
+                    "name": "button_link",
+                    "type": "url",
                     "instructions": "",
                     "required": 0,
                     "conditional_logic": 0,
                     "wrapper": {
-                        "width": "65",
+                        "width": "30",
                         "class": "",
                         "id": ""
                     },
                     "default_value": "",
-                    "placeholder": "",
-                    "prepend": "",
-                    "append": "",
-                    "maxlength": ""
+                    "placeholder": ""
                 },
                 {
                     "key": "field_59d4b772c8c75",
@@ -159,7 +156,7 @@
                     "required": 0,
                     "conditional_logic": 0,
                     "wrapper": {
-                        "width": "35",
+                        "width": "30",
                         "class": "",
                         "id": ""
                     },
@@ -168,22 +165,6 @@
                     "prepend": "",
                     "append": "",
                     "maxlength": ""
-                },
-                {
-                    "key": "field_59d4b768c8c74",
-                    "label": "Button Link",
-                    "name": "button_link",
-                    "type": "url",
-                    "instructions": "",
-                    "required": 0,
-                    "conditional_logic": 0,
-                    "wrapper": {
-                        "width": "65",
-                        "class": "",
-                        "id": ""
-                    },
-                    "default_value": "",
-                    "placeholder": ""
                 },
                 {
                     "key": "field_59d4b758c8c73",
@@ -224,5 +205,5 @@
     "hide_on_screen": "",
     "active": 1,
     "description": "",
-    "modified": 1516048621
+    "modified": 1511527223
 }

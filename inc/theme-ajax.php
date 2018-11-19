@@ -14,25 +14,15 @@ function ajaxStory () {
 	$posts = get_posts( $agrs );
 
 	foreach ( $posts as $key ) {
-
-		$excerpt = $key->post_excerpt;
-		if ( trim($excerpt) == '' ) {
-			$excerpt = substr(trim(strip_tags($key->post_content)),0,150);
-			$temp = explode(' ',$excerpt);
-			array_pop($temp);
-			$excerpt = implode(' ',$temp);
-		}
-
 		$stories .= '<div class="col-md-6">
 			<div class="img" style="background-image:url('. get_the_post_thumbnail_url($key->ID,'full') .')"></div>
 			<div class="data">
 				<div class="name">'. $key->post_title .'<div class="bg1"></div></div>			
-				'. $excerpt .'		
-				<div class="meta bgc'.$pal.'">'. get_the_date( $format, $key ) .' | '. get_the_author_meta('display_name',$key->post_author) .'</div>	
+				'. $key->post_excerpt .'		
+				<div class="meta bgc'.$pal.'">'. get_the_date( 'd/m/Y', $key ) .' - '. get_the_author_meta('display_name',$key->post_author) .'</div>	
 				<a href="'. get_permalink($key->ID) .'"><button class="ih-btn btn'.$pal.'">view'. arrowR .'</button></a>		
 			</div>
         </div>';
-
 	}
 	die($stories);
 }

@@ -8,7 +8,7 @@
             <div class="icon" style="background-image:url(<?= get_the_post_thumbnail_url(); ?>)"></div>
             <div class="data">
                 <div class="name"><?php the_title(); ?><div class="bg1"></div></div>
-                <div class="meta bgc2"><?= get_the_date( 'j F Y', $post ) .' - '. get_the_author_meta('display_name',$post->post_author); ?></div>
+                <div class="meta bgc2"><?= get_the_date( 'd/m/Y', $post ) .' - '. get_the_author_meta('display_name',$post->post_author); ?></div>
             </div>
         </div>
     </div>
