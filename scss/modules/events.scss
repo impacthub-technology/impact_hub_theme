@@ -6,11 +6,8 @@
     font-weight: $wMedium;
     padding: 0 40px 20px;
   }
-  .col-md-12 {
-    padding: 20px 10px;
-    &:not(.true) { display: none }
-  }
-  .col-md-12:nth-child(2n) { clear: both; }
+  .col-md-6 { padding: 20px 10px; }
+  .col-md-6:nth-child(2n) { clear: both; }
   .vc-mid {
     background: center;
     background-size: cover;

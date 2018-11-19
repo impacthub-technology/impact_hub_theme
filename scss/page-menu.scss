@@ -1,20 +1,15 @@
 @import "options";
 
-body.home #pageMenu,
-body.search #pageMenu{ display: none !important; }
-
 #pageMenu {
   padding: 20px 0;
   text-align: center;
   width: 100%;
   div > .icon {
-    > * {
-      display: block;
-      margin-bottom: 10px;
-      max-height: 70px;
-      transition: .2s;
-    }
-    &.ib > * {
+    display: block;
+    margin-bottom: 10px;
+    max-height: 70px;
+    transition: .2s;
+    &.ib {
       margin: 0 auto;
       max-height: 0;
     }
@@ -22,15 +17,13 @@ body.search #pageMenu{ display: none !important; }
   h3 {
     span { vertical-align: middle; }
     .icon {
-      > * {
-        max-height: 0;
-        transition: .2s;
-        width: 0;
-      }
-      &.ib > * {
+      max-height: 0;
+      transition: .2s;
+      width: 0;
+      &.ib {
         margin: 0 30px 0 0;
         max-height: 35px;
-        width: 40px;
+        width: auto;
       }
     }
   }
@@ -90,7 +83,6 @@ body.search #pageMenu{ display: none !important; }
     a.na {
       border-bottom: 3px solid transparent;
       color: rgba($cr5,.5);
-      cursor: pointer;
       display: inline-block;
       font-weight: $wMedium;
       margin: 5px;
@@ -102,10 +94,7 @@ body.search #pageMenu{ display: none !important; }
       &:nth-last-child(1) { margin-right: 75px; }
     }
   }
-  .vc-mid.fort {
-    min-width: 125px;
-    padding: 0 15px;
-  }
+  .vc-mid.fort { padding: 0 15px; }
   .vc-mid.forn {
     position: relative;
     width: 100%;

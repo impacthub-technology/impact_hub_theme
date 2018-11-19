@@ -80,11 +80,8 @@ function themeCustomize( $wp_customize ) {
 
 	$wp_customize->add_setting( 'logo_main' );
 	$wp_customize->add_setting( 'logo_second' );
-	$wp_customize->add_setting( 'json_numbers' );
 	$wp_customize->add_control( new WP_Customize_Image_Control( $wp_customize, 'logo_main', [ 'label' => 'Main Logo', 'section' => 'title_tagline' ] ) );
 	$wp_customize->add_control( new WP_Customize_Image_Control( $wp_customize, 'logo_second', [ 'label' => 'Second Logo', 'section' => 'title_tagline' ] ) );
-	$wp_customize->add_control( 'json_numbers', [ 'section' => 'title_tagline', 'label' => 'Link to JSON',
-	                                              'description' => '[json type="members"]<br>[json type="locations"]<br>[json type="makers"]' ] );
 
 
 	$wp_customize->add_setting( 'preloader_logo' );
