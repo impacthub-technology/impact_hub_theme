@@ -25,18 +25,17 @@ class socialLinks extends WP_Widget {
 		echo getSocial();
 	}
 	function form ( $instance ) {}
-	function update( $new_instance = null, $old_instance= null) {}
+	function update( $new_instance, $old_instance ) {}
 }
-
 class siteLogo extends WP_Widget {
 	function __construct() {
 		parent::__construct( 'siteLogo', 'Logo' );
 	}
-	public function widget( $args= null, $instance= null ) {
+	public function widget( $args, $instance ) {
 		echo getLogo( false );
 	}
-	function form ( $instance= null ) {}
-	function update( $new_instance= null, $old_instance= null ) {}
+	function form ( $instance ) {}
+	function update( $new_instance, $old_instance ) {}
 
 }
 
@@ -78,8 +77,8 @@ function wds_scripts() {
 
 add_action( 'admin_enqueue_scripts', 'load_admin_style' );
 function load_admin_style() {
-	wp_enqueue_style( 'admin_css', THEME_URL . '/css/admin.css', false, '1' );
-	wp_enqueue_script( 'admin_js', THEME_URL .'/js/admin.js', array( 'jquery' ), '1', true );
+	wp_enqueue_style( 'admin_css', THEME_URL . '/css/admin.css', false, 2 );
+	wp_enqueue_script( 'admin_js', THEME_URL .'/js/admin.js', array( 'jquery' ), 2, true );
 }
 
 
@@ -137,5 +136,28 @@ add_action( 'wp_loaded', function () {
 	define( 'pre_logo', get_theme_mod( 'preloader_logo', '' ) );
 	define( 'pre_bg', get_theme_mod( 'preloader_bg', '#f5f5f5' ) );
 	define( 'pre_wave', get_theme_mod( 'preloader_wave', '#f5f5f5' ) );
+
+	$data = [];
+	$json = trim(get_theme_mod('json_numbers'));
+	if ( $json != '' ) $json = file_get_contents( $json );
+	if ( !!$json ) {
+		$json = json_decode($json);
+		if ( $json != '' and isset( $json->feed->entry ) ) {
+			foreach ( $json->feed->entry as $key ) {
+				$k   = (array) $key->title;
+				$v   = (array) $key->content;
+				$val = explode( ':', $v['$t'] );
+				if ( isset( $val[1] ) ) {
+					$data[ $k['$t'] ] = trim( $val[1] );
+				}
+				if ( $k['$t'] == 'members' and (int) $data[ $k['$t'] ] > 1000 ) {
+					$data[ $k['$t'] ] = floor( $data[ $k['$t'] ] / 1000 ) . 'k';
+				}
+			}
+		}
+	}
+	define( 'jsonMembers', isset($data['members']) ? $data['members'] : '' );
+	define( 'jsonLocations', isset($data['locations']) ? $data['locations'] : '' );
+	define( 'jsonMakers', isset($data['makers']) ? $data['makers'] : '' );
 
 } );
