@@ -73,7 +73,7 @@ function ajaxEvent () {
 							<div class="name">'. $key->post_title .'<div class="bg'.$pal[0].'"></div></div>			
 							'. $key->post_excerpt .'		
 							<div class="meta bgc'.$pal[0].'">'. $date .'</div>
-							<a href="'. get_permalink($key->ID) .'"><button class="ih-btn btn'.$pal[1].'">view'. arrowR .'</button></a>		
+							<a href="'. get_permalink($key->ID) .'"><button class="ih-btn btn'.$pal[1].'">'. __('view','impact-hub-theme') . arrowR .'</button></a>		
 						</div>
 					</div>
 					<div class="vc-mid img" style="background-image:url('. get_the_post_thumbnail_url($key->ID,'large') .')"></div>
