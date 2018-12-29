@@ -47,7 +47,7 @@ function moduleEvents($id) {
 							<div class="name"><a href="'. $item['link'] .'">'. $item['title'] .'<div class="bg1'.$pal.'"></div></a></div>			
 							'. $item['desc'] .'		
 							<div class="meta">'. $item['date'] .'</div>
-							<a href="'. $item['link'] .'"><button class="ih-btn btn'.$pal.'">view'. arrowR .'</button></a>		
+							<a href="'. $item['link'] .'"><button class="ih-btn btn'.$pal.'">' . __('view','impact-hub-theme') . arrowR .'</button></a>		
 						</div>
 					</div>
 					<div class="vc-mid img" style="background-image:url('. $item['img'] .')"></div>
@@ -57,7 +57,7 @@ function moduleEvents($id) {
 
 		}
 
-		if ( $i > $count ) $event .= '<p class="clear"><button class="showEvent ih-btn bg5 bgc'.$palBtn.'">load more</button></p>';
+		if ( $i > $count ) $event .= '<p class="clear"><button class="showEvent ih-btn bg5 bgc'.$palBtn.'">' . __('load more', 'impact-hub-theme') . '</button></p>';
 		$event .= '</div>';
 
 	}
