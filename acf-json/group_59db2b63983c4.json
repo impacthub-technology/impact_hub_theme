@@ -211,6 +211,25 @@
                     },
                     "default_value": "",
                     "placeholder": ""
+                },
+                {
+                    "key": "field_5a8d991e22f00",
+                    "label": "Bio",
+                    "name": "bio",
+                    "type": "text",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": "",
+                    "maxlength": ""
                 }
             ]
         }
