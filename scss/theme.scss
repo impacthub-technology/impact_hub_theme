@@ -310,7 +310,7 @@ body.search {
 @media (max-width: 782px) {
   html[lang] { margin-top: 0 !important; }
   body { font-size: 22px; }
-  #wpadminbar { display: none; }
+  #wpadminbar { display: none;  }
   [class*="area-"] { padding: 40px 0; }
   .mdls .title { font-size: 45px; }
 }
@@ -319,7 +319,6 @@ body.search {
   .logo .loc { font-size: 18px !important; }
   .mdls .title { font-size: 35px; }
 }
-
 
 @import "header";
 @import "footer";
