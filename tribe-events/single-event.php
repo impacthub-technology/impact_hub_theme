@@ -19,10 +19,10 @@
     }
 
     $table = [
-        'Date' => $date,
-        'Duration' => get_field('duration'),
-        'Location' => $loc,
-        'Register' => get_field('register')
+        __('Date','impact-hub-theme') => $date,
+	    __('Duration','impact-hub-theme') => get_field('duration'),
+        __('Location','impact-hub-theme') => $loc,
+        __('Register','impact-hub-theme') => get_field('register')
     ];
     ?>
 	<div class="area-event">
@@ -47,7 +47,7 @@
                     <?php } ?>
                     <div class="price bgc<?= $pal; ?>">
                         <div class="v-mid">
-                            <div class="vc-mid">Price <?= tribe_get_cost($id,true); ?></div>
+                            <div class="vc-mid"><?= __('Price','impact-hub-theme') ?> <?= tribe_get_cost($id,true); ?></div>
                         </div>
                     </div>
                 </div>
@@ -58,10 +58,10 @@
 	</div>
 
     <div class="area-events bg<?= $pal; ?>">
-        <h2 class="title">See other Events<div class="bg4"></div></h2>
+        <h2 class="title"><?= __('See other Events','impact-hub-theme') ?><div class="bg4"></div></h2>
         <div class="container"><div class="events"><div></div></div></div>
         <p class="clear">
-            <button class="addEvent ih-btn btn5">load more</button>
+            <button class="addEvent ih-btn btn5"><?= __('load more','impact-hub-theme') ?></button>
             <i class="glyphicon glyphicon-refresh gi-animate"></i>
         </p>
     </div>
