@@ -68,7 +68,7 @@
             "name": "button_text",
             "type": "text",
             "instructions": "",
-            "required": 0,
+            "required": 1,
             "conditional_logic": 0,
             "wrapper": {
                 "width": "40",
@@ -87,7 +87,7 @@
             "name": "button_link",
             "type": "url",
             "instructions": "",
-            "required": 0,
+            "required": 1,
             "conditional_logic": 0,
             "wrapper": {
                 "width": "60",
@@ -134,5 +134,5 @@
     "hide_on_screen": "",
     "active": 1,
     "description": "",
-    "modified": 1516047424
+    "modified": 1528885250
 }
