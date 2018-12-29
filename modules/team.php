@@ -14,7 +14,7 @@ function moduleTeam($id) {
 	if ( $title != '' ) $title = '<div class="title">'. $title .'<div class="bg'.$pal[1].'"></div></div>';
 
 	foreach ( $array as $key ) {
-		$btn = ( $key['link'] == '' ) ? '' : '<a href="'. $key['link'] .'"><button class="ih-btn btn'.$pal[1].'">profile in community app'. arrowR .'</button></a>';
+		$btn = ( $key['link'] == '' ) ? '' : '<a href="'. $key['link'] .'"><button class="ih-btn btn'.$pal[1].'">' . __('view profile', 'impact-hub-theme') . arrowR .'</button></a>';
 
 		$team .= '<div class="item row col-md-6 hide">
 			<div class="col-sm-6 col-xs-6 img" style="background-image:url('. $key['image'] .')"></div>
@@ -31,7 +31,7 @@ function moduleTeam($id) {
 
 	return '<div class="mdls area-team bg'.$pal[0].'">
 		<div class="container">'. $title .'<div class="mod-content">'. get_field('content',$id) .'</div><div class="row">'. $team .'</div></div>
-		<div class="clear"></div><button class="ih-btn btn'.$pal[1].' addTeam">load more</button>
+		<div class="clear"></div><button class="ih-btn btn'.$pal[1].' addTeam">' . __('load more', 'impact-hub-theme') . '</button>
     </div>
     <script>
     	var cTeam = 0, tPagin = '. $pagin .';
