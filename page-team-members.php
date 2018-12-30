@@ -45,7 +45,7 @@
                                   				<div class="name text-uppercase"><?php the_field( "last_name" ); ?></div>
                                   				<div class="bg2"></div>
                                   				<div class="pos"><?php the_field( "role" ); ?></div>
-                                  				<div class="email bgc2 text-lowercase"><?php the_field( "email" ); ?></div>
+                                                <div class="email bgc2 text-lowercase"><a href="mailto:<?php the_field( "email" ); ?>"><?php the_field( "email" ); ?></a></div>
                                   			</div>
                                               <a href="<?php echo get_the_permalink(); ?>">
                                                 <button class="ih-btn btn2">More Info<svg class="arrow-r" xmlns="http://www.w3.org/2000/svg" viewBox="11067.266 447.763 12.149 21.415">

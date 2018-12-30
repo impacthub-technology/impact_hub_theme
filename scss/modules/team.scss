@@ -26,7 +26,12 @@
     line-height: 1;
   }
   .pos { font-size: 16px; }
-  .email { font-size: 12px; }
+  .email {
+    font-size: 12px;
+    a {
+      color: inherit;
+    }
+  }
   a > button {
     bottom: 0;
     left: 50%;

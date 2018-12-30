@@ -23,7 +23,7 @@ function moduleTeam($id) {
 				<div class="name">'. $key['last_name'] .'</div>
 				<div class="bg'.$pal[1].'"></div>
 				<div class="pos">'. $key['position'] .'</div>
-				<div class="email bgc'.$pal[2].'">'. $key['email'] .'</div>
+				<div class="email bgc'.$pal[2].'"><a href="mailto:'. $key['email'] .'">' . $key['email'] . '</a></div>
 			</div>
             '. $btn .'
         </div>';
