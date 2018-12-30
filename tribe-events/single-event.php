@@ -20,10 +20,17 @@
 
     $table = [
         __('Date','impact-hub-theme') => $date,
-	    __('Duration','impact-hub-theme') => get_field('duration'),
+	    __('Time','impact-hub-theme') => date_format( date_create(get_post_meta($id,'_EventStartDate',true)), 'G:i' ) . ' - ' . date_format( date_create(get_post_meta($id,'_EventEndDate',true)), 'G:i' ),
         __('Location','impact-hub-theme') => $loc,
-        __('Register','impact-hub-theme') => get_field('register')
     ];
+
+	if(get_field('register') != null)
+	    $table[__('Register','impact-hub-theme')] = '<a href="' . get_field('register') . '">' . __('Register','impact-hub-theme') . '</a>';
+
+	$price = tribe_get_cost($id,true);
+	if($price == null)
+	    $price = __('Free', 'impact-hub-theme');
+
     ?>
 	<div class="area-event">
 		<a href="<?= PAGE_EVENTS; ?>"><?php svg('arrow-l'); ?></a>
@@ -47,7 +54,7 @@
                     <?php } ?>
                     <div class="price bgc<?= $pal; ?>">
                         <div class="v-mid">
-                            <div class="vc-mid"><?= __('Price','impact-hub-theme') ?> <?= tribe_get_cost($id,true); ?></div>
+                            <div class="vc-mid"><?= __('Entry fee','impact-hub-theme') ?> <?= $price ?></div>
                         </div>
                     </div>
                 </div>
