@@ -5,7 +5,7 @@ $get = htmlspecialchars($_GET['s']);
 $pal = ( palette ) ? 1 : 3;
 
 $search_posts = (new WP_Query())->query('post_type=post&nopaging=true&suppress_filters=0&s='. $get);
-$search_pages = (new WP_Query())->query('post_type=page&nopaging=true&suppress_filters=0&s='. $get);
+#$search_pages = (new WP_Query())->query('post_type=page&nopaging=true&s='. $get);
 $search_event = (new WP_Query())->query('post_type=tribe_events&nopaging=true&suppress_filters=0&s='. $get);
 ?>
 
@@ -67,31 +67,7 @@ $search_event = (new WP_Query())->query('post_type=tribe_events&nopaging=true&su
 <?php } ?>
 
 
-<?php if ( count($search_pages) > 0 ) { ?>
-    <div class="mdls area-stories search pages bg1">
-        <div class="container">
-            <div class="title">Pages<div class="bg2"></div></div>
-            <div class="row">
-				<?php
-				foreach ( $search_pages as $key ) {
-					if ( strripos($key->post_title, $get) === false and strripos($key->post_content, $get) === false ) continue;
-					echo '<div class="col-md-6">
-					<div class="img" style="background-image:url('. get_the_post_thumbnail_url($key->ID,'full') .')"></div>
-					<div class="data">
-						<div class="name">'. $key->post_title .'<div class="bg1"></div></div>
-						<div class="meta bgc2">'. get_the_date( 'd/m/Y', $key ) .' - '. get_the_author_meta('display_name',$key->post_author) .'</div>
-						<a href="'. get_permalink($key->ID) .'"><button class="ih-btn btn2">view'. arrowR .'</button></a>		
-					</div>
-		        </div>';
-				}
-				?>
-            </div>
-        </div>
-    </div>
-<?php } ?>
-
-
-<?php if ( count($search_posts) + count($search_pages) + count($search_event) < 1 ) { ?>
+<?php if ( count($search_posts) + count($search_event) < 1 ) { ?>
 <div class="mdls area-stories bg3">
     <div class="container">
         <p>You are searching for "<?= $get; ?>"</p>

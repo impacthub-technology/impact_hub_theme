@@ -36,9 +36,9 @@
             "placeholder": "",
             "prepend": "",
             "append": "",
-            "min": 0,
+            "min": 2,
             "max": "",
-            "step": 1
+            "step": 2
         },
         {
             "key": "field_5a0efd3b47813",

@@ -5,7 +5,6 @@
 function moduleForms($id) {
 
 	$pal = ( palette ) ? [1,1,2,2,2,1] : [3,2,1,3,3,2];
-	$err = ( palette ) ? [cr2,cr1] : [cr3,cr2];
 	$palBtn = ( palette ) ? [1,2] : [2,3];
 
 	$col2 = ( get_field('in2col',$id) ) ? '' : 'db';
@@ -41,10 +40,6 @@ function moduleForms($id) {
 	return '<div class="mdls area-forms bg'.$pal[4].' v-mid '. $col2 .'">
 		<div class="vc-mid">'. $sn . $f1 . '</div>
 		<div class="vc-mid bg'.$pal[5].'">'. $f2 .'</div>
-    </div>
-    <style>
-    .area-forms .vc-mid:first-child .validation_error {border-color:'. $err[0] .';color:'. $err[0] .'}
-    .area-forms .vc-mid:last-child .validation_error {border-color:'. $err[1] .';color:'. $err[1] .'}
-	</style>';
+    </div>';
 
 }

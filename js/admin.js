@@ -70,20 +70,5 @@
         $('.vc_ui-panel.vc_active[data-vc-shortcode="vc_section"] input[name="el_class"]').val(this.value);
     });
 
-    $(document).on('change','.vc_ui-panel.vc_active[data-vc-shortcode="vc_row"] [name="row-text-color"]',function(){
-        $('.vc_ui-panel.vc_active[data-vc-shortcode="vc_row"] input[name="el_class"]').val(this.value);
-    });
-
-    $(document).on('change','.vc_ui-panel.vc_active[data-vc-shortcode="theme_button"] [name="btn-color"]',function(){
-        $('.vc_ui-panel.vc_active[data-vc-shortcode="theme_button"] input[name="color"]').val(this.value);
-    });
-
-    $(document).on('change','.vc_ui-panel.vc_active[data-vc-shortcode="theme_underline"] [name="line-color"]',function(){
-        $('.vc_ui-panel.vc_active[data-vc-shortcode="theme_underline"] input[name="line"]').val(this.value);
-    });
-
-    $(document).on('change','.vc_ui-panel.vc_active[data-vc-shortcode="theme_underline"] [name="row-text-color"]',function(){
-        $('.vc_ui-panel.vc_active[data-vc-shortcode="theme_underline"] input[name="color"]').val(this.value);
-    });
 
 })(jQuery);

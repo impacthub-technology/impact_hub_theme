@@ -12,10 +12,8 @@ function moduleSlider($id) {
 	foreach ( get_field('slides',$id) as $key ) {
 	    $btn = '<a href="'. $key['button_link'] .'"><button class="ih-btn btn'.$pal.'">'. $key['button_text'] . arrowR .'</button></a>';
 	    if ( $key['button_text'] == '' or $key['button_link'] == '' ) $btn = '';
-
-	    $title = ( $key['title'] != '' ) ? '<div class="title">'. $key['title'] .'</div>' : '';
 		$slider .= '<div class="item" style="background-image:url('. $key['image'] .')">
-            <div class="container v-mid"><div class="vc-mid">'. $title . $key['content'] . $btn .'</div></div>
+            <div class="container v-mid"><div class="vc-mid">'. $key['content'] . $btn .'</div></div>
         </div>';
     }
 
