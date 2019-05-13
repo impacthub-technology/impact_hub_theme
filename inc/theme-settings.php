@@ -91,15 +91,15 @@ function form_submit_button( $button, $form ) {
 }
 
 
-function getDateSF ( $s, $f ) {
-	$start = date_create($s);
-	$end = date_create($f);
+function getDateSF ( $start, $end ) {
 
-	$_start = [ date_format( $start, 'F' ), date_format( $start, 'g:i a' ) ];
-	$_end = [ date_format( $end, 'F' ), date_format( $end, 'g:i a' ) ];
+	$_start = [ date_format( $start, 'F d' ), date_format( $start, 'g:i a' ) ];
+	$_end = [ date_format( $end, 'F d' ), date_format( $end, 'g:i a' ) ];
 
 	$date = $_start[0] .' | '. $_start[1] .' to '. $_end[1];
-	if ( date_format( $start, 'Y/m/d' ) != date_format( $end, 'Y/m/d' ) ) $date = $_start[0] .' | '. $_start[1] .' to<br>'. $_end[0] .' | '. $_end[1];
+
+	if ( date_format( $start, 'Y/m/d' ) != date_format( $end, 'Y/m/d' ) )
+	    $date = $_start[0] .' | '. $_start[1] .' to<br>'. $_end[0] .' | '. $_end[1];
 
 	return $date;
 }

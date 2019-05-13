@@ -4,82 +4,52 @@
 
 function moduleEvents($id) {
 
-	$pal = ( palette ) ? 1 : 3;
-	$palBtn = ( palette ) ? 1 : '4 btn3';
-
-	$events = [];
-	switch ( get_field('show',$id) ) {
-		case 'past' : $show = 'past'; break;
-		case 'upcoming' : $show = 'upcoming'; break;
-		default: $show = 'custom';
+	switch ( get_field('show', $id) ) {
+		case 'past' :
+			$show = 'past';
+			break;
+		case 'upcoming' :
+			$show = 'upcoming';
+			break;
+		default:
+			$show = 'custom';
 	}
-	$event = tribe_get_events ([ 'post_type' => 'tribe_events', 'orderby' => 'meta_value', 'order' => 'ASC', 'meta_key' => '_EventStartDate', 'eventDisplay' => $show, 'suppress_filters' => false ]);
 
-	foreach ( $event as $key ) {
-		$start = date_create(get_post_meta($key->ID,'_EventStartDate',true));
+	$events = tribe_get_events ([
+		'posts_per_page' => -1,
+		'orderby' => 'meta_value',
+		'order' => 'ASC',
+		'meta_key' => '_EventStartDate',
+		'eventDisplay' => $show,
+		'suppress_filters' => false
+	]);
 
-		$date = getDateSF( get_post_meta($key->ID,'_EventStartDate',true), get_post_meta($key->ID,'_EventEndDate',true) );
+	if($show == 'past')
+		$events = array_reverse($events);
 
-		$events[ (int)date_format( $start, 'Ym' ) ][] = [
+	$events_per_months = [];
+	foreach ( $events as $event ) {
+		$start = date_create(get_post_meta($event->ID,'_EventStartDate',true));
+		$end = date_create(get_post_meta($event->ID,'_EventEndDate',true));
+
+
+		$events_per_months[ (int)date_format( $start, 'Ym' ) ][] = [
 			'label' => date_format( $start, 'F Y' ),
-			'title' => $key->post_title,
-			'desc' => $key->post_excerpt,
-			'img' => get_the_post_thumbnail_url($key->ID,'large'),
-			'date' => $date,
-			'link' => get_permalink($key->ID)
+			'title' => $event->post_title,
+			'desc' => $event->post_excerpt,
+			'img' => get_the_post_thumbnail_url($event->ID,'large'),
+			'date' => getDateSF( $start,  $end),
+			'link' => get_permalink($event->ID)
 		];
 	}
 
-	$event = '';
-	foreach ( $events as $key ) {
-		$event .= '<div class="item"><div class="month">'. $key[0]['label'] .'</div>';
+	set_query_var('events_per_months', $events_per_months);
+	set_query_var('module_id', $id);
+	set_query_var('show', $show);
 
-		$i = 0;
-		foreach ( $key as $item ) {
+	ob_start();
+	get_template_part('templates/event-calendar');
 
-			$i++;
-			$event .= '<div class="col-md-6">
-				<div class="v-mid">
-					<div class="vc-mid">
-						<div class="data">
-							<div class="name">'. $item['title'] .'<div class="bg'.$pal.'"></div></div>			
-							'. $item['desc'] .'
-							<div class="meta">'. $item['date'] .'</div>
-							<a href="'. $item['link'] .'"><button class="ih-btn btn'.$pal.'">' . __('view','impact-hub-theme') . arrowR .'</button></a>
-						</div>
-					</div>
-					<div class="vc-mid img" style="background-image:url('. $item['img'] .')"></div>
-				</div>
-			</div>';
-
-		}
-
-		if ( $i > 10 ) $event .= '<p class="clear"><button class="showEvent ih-btn bg5 bgc'.$palBtn.'">load more</button></p>';
-
-		$event .= '</div>';
-
-	}
-
-	return '
-    <div class="mdls area-events bg'.$pal.'">
-   		<div class="container">
-            <div class="row">
-        		<div class="slider-'. $id .' owl-carousel">'. $event .'</div>
-        	</div>
-        </div>
-    </div>
-    <script>
-        jQuery(document).ready(function(){
-            jQuery(".slider-'. $id .'").owlCarousel({
-            	nav: true,
-            	navText: [ "", "" ],
-	            items: 1,
-	            mouseDrag: false,
-	            pullDrag: false,
-	            touchDrag: false
-            });
-        });
-    </script>
-    ';
+	return ob_get_clean();
 
 }
