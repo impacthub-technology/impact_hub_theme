@@ -24,7 +24,7 @@
             "label": "Image",
             "name": "image",
             "type": "image",
-            "instructions": "Width less than 1200px",
+            "instructions": "",
             "required": 0,
             "conditional_logic": 0,
             "wrapper": {

@@ -1,22 +1,27 @@
 <?php
 # Template Name: Stories
+
 get_header();
 
 $pal = ( palette ) ? 1 : 2;
 
 $stories = '';
+
 $i = $count = (int)get_field('stories_count');
 $order = ( get_field('sortable') == 'ASC' ) ? 'ASC' : 'DESC';
 
 if ( isset($_COOKIE['blogSort']) and $_COOKIE['blogSort'] == 'ASC' ) $order = 'ASC';
 if ( isset($_COOKIE['blogSort']) and $_COOKIE['blogSort'] == 'DESC' ) $order = 'DESC';
 
+
+$_cat = ( isset($_COOKIE['blogCat']) ) ? htmlspecialchars($_COOKIE['blogCat']) : '';
 $cat = ( isset($_COOKIE['blogCat']) and $_COOKIE['blogCat'] != 'all' ) ? get_category_by_slug($_COOKIE['blogCat'])->term_id : 0;
 
 $args = [
 	'posts_per_page' => $count,
 	'orderby' => 'date',
-	'order' => $order, 'suppress_filters' => false
+	'order' => $order,
+	'suppress_filters' => false
 ];
 
 if ( $cat > 0 ) $args['category'] = $cat;
@@ -75,10 +80,10 @@ set_query_var( 'pal', $pal );
 <?php the_content(); ?>
 
     <script>
-        jQuery(document).ready(function($){
+        jQuery(document).ready(function(){
             stories[<?= get_the_ID() ?>] = [<?= $count; ?>,"<?= $order; ?>",<?= $cat; ?>];
         });
-    </script>
+    </script>\
 
 
 <?php get_footer(); ?>

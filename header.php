@@ -28,14 +28,14 @@
 
                 <div class="pull-right">
                     <div id="mainNav">
-	                    <?= getLang(); ?>
-                        <ul class="main"><?= getMainNav(); ?></ul>
+                        <ul><?= getMainNav(); ?></ul>
                     </div>
                     <span class="navbg"></span>
 
                     <img id="toggle" src="<?= THEME_URL; ?>/img/nav.svg" alt="">
                     <span class="searchBtn"><?php svg('search'); ?></span>
                 </div>
+                <?= getLang(); ?>
             </div>
         </div>
 	    <?php getPageMenu(); ?>

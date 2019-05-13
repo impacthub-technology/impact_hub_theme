@@ -44,8 +44,6 @@
 
     <?php $pal = ( palette ) ? [bg1,cr1] : [bg3,cr3]; ?>
 
-    .area-actions .icon svg {fill:<?= ( palette ) ? bg1 : bg3; ?>}
-
     .area-member .popup .ih-btn.btn4 {background:<?= $pal[0]; ?>!important;border-color:<?= $pal[0]; ?>!important;color:<?= $pal[1]; ?>!important}
     .area-member .popup .ih-btn.btn4:hover {background:<?= $pal[1]; ?>!important;color:<?= $pal[0]; ?>!important}
     .area-member .popup .ih-btn.btn4 svg {stroke:<?= $pal[1]; ?>}
@@ -69,16 +67,9 @@
     .area-gallery .addGallery:hover svg {stroke:<?= cr4; ?>}
     <?php } ?>
 
-    .area-forms .vc-mid.bg2 .gform_wrapper .ih-btn {background:<?= bg1; ?>!important;border-color:<?= bg1; ?>!important;color:<?= cr1; ?>!important}
-    .area-forms .vc-mid.bg2 .gform_wrapper .ih-btn:hover {background:<?= cr1; ?>!important;color:<?= bg1; ?>!important}
-    .area-forms .vc-mid.bg2 .gform_wrapper .ih-btn:hover svg {stroke:<?= bg1; ?>!important}
-    /*.area-forms .vc-mid:first-child .validation_error {border-color:<?= bg1; ?>;color:<?= bg1; ?>}
-    .area-forms .vc-mid:last-child .validation_error {border-color:<?= bg2; ?>;color:<?= bg2; ?>}*/
-    <?php if  ( palette ) { ?>
-    .area-forms .bg2 .gform_wrapper .ih-btn {background:<?= bg1; ?>!important;border-color:<?= bg1; ?>!important;color:<?= cr1; ?>!important}
-    .area-forms .bg2 .gform_wrapper .ih-btn:hover {background:<?= cr1; ?>!important;color:<?= bg1; ?>!important}
-    .area-forms .bg2 .gform_wrapper .ih-btn:hover svg {stroke:<?= bg1; ?>!important}
-    <?php } ?>
+    .area-forms .vc-mid.bg3 .gform_wrapper .ih-btn {background:<?= bg1; ?>;border-color:<?= bg1; ?>;color:<?= cr1; ?>}
+    .area-forms .vc-mid.bg3 .gform_wrapper .ih-btn:hover {background:<?= cr1; ?>;color:<?= bg1; ?>}
+    .area-forms .vc-mid.bg3 .gform_wrapper .ih-btn:hover svg {stroke:<?= bg1; ?>}
 
     .popup .gform_wrapper .ih-btn {background:<?= bg3; ?>;border-color:<?= bg3; ?>;color:<?= cr3; ?>}
     .popup .gform_wrapper .ih-btn:hover {background:<?= cr3; ?>;color:<?= bg3; ?>}
@@ -106,82 +97,14 @@
     #page .bg4 {background:<?= bg4; ?>!important;color:<?= cr4; ?>}
     #page .bg5 {background:<?= bg5; ?>!important;color:<?= cr5; ?>}
     #page .bg6 {background:<?= bg6; ?>!important;color:<?= cr6; ?>}
-    #page .bg7 {background:<?= bg7; ?>!important;color:<?= cr7; ?>}
-    #page .bg8 {background:<?= bg8; ?>!important;color:<?= cr8; ?>}
-    #page .bg9 {background:<?= bg9; ?>!important;color:<?= cr9; ?>}
-    #page .bg10 {background:<?= bg10; ?>!important;color:<?= cr10; ?>}
-    #page .bg11 {background:<?= bg11; ?>!important;color:<?= cr11; ?>}
-    #page .bg12 {background:<?= bg12; ?>!important;color:<?= cr12; ?>}
-    #page .bg13 {background:<?= bg13; ?>!important;color:<?= cr13; ?>}
-    #page .bg14 {background:<?= bg14; ?>!important;color:<?= cr14; ?>}
     #page .bgc1 {color:<?= bg1; ?>!important;}
     #page .bgc2 {color:<?= bg2; ?>!important;}
     #page .bgc3 {color:<?= bg3; ?>!important;}
     #page .bgc4 {color:<?= bg4; ?>!important;}
     #page .bgc5 {color:<?= bg5; ?>!important;}
     #page .bgc6 {color:<?= bg6; ?>!important;}
-    #page .bgc7 {color:<?= bg7; ?>!important;}
-    #page .bgc8 {color:<?= bg8; ?>!important;}
-    #page .bgc9 {color:<?= bg9; ?>!important;}
-    #page .bgc10 {color:<?= bg10; ?>!important;}
-    #page .bgc11 {color:<?= bg11; ?>!important;}
-    #page .bgc12 {color:<?= bg12; ?>!important;}
-    #page .bgc13 {color:<?= bg13; ?>!important;}
-    #page .bgc14 {color:<?= bg14; ?>!important;}
 
     <?php if ( palette ) { ?>
-    #page #footer { background: #292929 !important;} 
+    #page #footer { background: #292929 !important;}
     <?php } ?>
-
-
-    /* Bootstrap */
-    <?php
-    $bs12 = changeColor(bg1,1.2);
-    $bs14 = changeColor(bg1,1.4);
-    $bs16 = changeColor(bg1,1.6);
-    $bs18 = changeColor(bg1,1.8);
-    ?>
-
-    a{color:<?= bg1; ?>}
-
-    <?php if  ( palette == 10 ) { ?>
-    .area-member .tBody .item>div{background: #404043; color: #FFF; }
-    
-    <?php } else { ?>
-    .area-member .tBody .item>div{background:<?= bg1; ?>;color:<?= bg5; ?>;}
-    .area-member .tBody .item .name>div {background:<?= bg4; ?> !important;>}
-    .area-member .fbtn button {background:<?= bg2; ?> !important;>;color:<?= bg1; ?> !important; border-color:<?= bg2; ?> !important;}
-    .area-member .mCSB_scrollTools .mCSB_draggerContainer div {background:<?= bg2; ?> !important;}
-    .area-member .tBody .mCSB_dragger div {background:<?= bg2; ?> !important;}
-    <?php } ?>    
-
-    .btn-link{color:<?= bg1; ?>}
-    .dropdown-menu>.active>a,.dropdown-menu>.active>a:focus,.dropdown-menu>.active>a:hover{background-color:<?= bg1; ?>}
-    .nav .open>a,.nav .open>a:focus,.nav .open>a:hover{border-color:<?= bg1; ?>}
-    .nav-pills>li.active>a,.nav-pills>li.active>a:focus,.nav-pills>li.active>a:hover{background-color:<?= bg1; ?>}
-    .pagination>li>a,.pagination>li>span{color:<?= bg1; ?>}
-    .pagination>.active>a,.pagination>.active>a:focus,.pagination>.active>a:hover,.pagination>.active>span,.pagination>.active>span:focus,.pagination>.active>span:hover{background-color:<?= bg1; ?>;border-color:<?= bg1; ?>}
-    .list-group-item.active>.badge,.nav-pills>.active>a>.badge{color:<?= bg1; ?>}
-    a.thumbnail.active,a.thumbnail:focus,a.thumbnail:hover{border-color:<?= bg1; ?>}
-    .progress-bar{background-color:<?= bg1; ?>}
-    .list-group-item.active,.list-group-item.active:focus,.list-group-item.active:hover{background-color:<?= bg1; ?>;border-color:<?= bg1; ?>}
-    .pagination>li>a:focus,.pagination>li>a:hover,.pagination>li>span:focus,.pagination>li>span:hover,.btn-link:focus,.btn-link:hover,a:focus,a:hover{color:<?= $bs18; ?>}
-
-    .bg-primary {background:<?= bg1; ?>}
-    a.bg-primary:focus,a.bg-primary:hover{background-color:<?= $bs12; ?>}
-    .text-primary {color:<?= bg1; ?>}
-    a.text-primary:focus,a.text-primary:hover{color:<?= $bs12; ?>}
-    .btn-primary{background-color:<?= bg1; ?>;border-color:<?= $bs14; ?>}
-    .btn-primary.focus,.btn-primary:focus{background-color:<?= $bs14; ?>;border-color:<?= $bs18; ?>}
-    .btn-primary.active,.btn-primary:active,.btn-primary:hover,.open>.dropdown-toggle.btn-primary{background-color:<?= $bs14; ?>;border-color:<?= $bs16; ?>}
-    .btn-primary.active.focus,.btn-primary.active:focus,.btn-primary.active:hover,.btn-primary:active.focus,.btn-primary:active:focus,.btn-primary:active:hover,.open>.dropdown-toggle.btn-primary.focus,.open>.dropdown-toggle.btn-primary:focus,.open>.dropdown-toggle.btn-primary:hover{background-color:<?= $bs16; ?>;border-color:<?= $bs18; ?>}
-    .btn-primary.disabled.focus,.btn-primary.disabled:focus,.btn-primary.disabled:hover,.btn-primary[disabled].focus,.btn-primary[disabled]:focus,.btn-primary[disabled]:hover,fieldset[disabled] .btn-primary.focus,fieldset[disabled] .btn-primary:focus,fieldset[disabled] .btn-primary:hover{background-color:<?= bg1; ?>;border-color:<?= $bs14; ?>}
-    .btn-primary .badge{color:<?= bg1; ?>}
-    .label-primary{background-color:<?= bg1; ?>}
-    .label-primary[href]:focus,.label-primary[href]:hover{background-color:<?= $bs12; ?>}
-    .panel-primary{border-color:<?= bg1; ?>}
-    .panel-primary>.panel-heading{color:#fff;background-color:<?= bg1; ?>;border-color:<?= bg1; ?>}
-    .panel-primary>.panel-heading+.panel-collapse>.panel-body{border-top-color:<?= bg1; ?>}
-    .panel-primary>.panel-heading .badge{color:<?= bg1; ?>;background-color:#fff}
-    .panel-primary>.panel-footer+.panel-collapse>.panel-body{border-bottom-color:<?= bg1; ?>}
 </style>

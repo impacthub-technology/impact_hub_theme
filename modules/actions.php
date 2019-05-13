@@ -16,7 +16,7 @@ function moduleActions($id) {
 		if ( $key['button'] == '' or $key['link'] == '' ) $btn = '';
 
 		$we .= '<div class="item">
-			<div class="icon">'. _svg($key['icon'],true) .'</div>
+			<div class="icon" style="background-image:url('. $key['icon'] .')"></div>
 			<div class="name">'. $key['name'] .'</div>
             '. $btn .'
         </div>';

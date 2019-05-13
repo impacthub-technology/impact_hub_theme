@@ -17,6 +17,7 @@ function ajaxStory () {
 	if ( (int)$_POST['cat'] > 0 )
 		$args['category'] = (int)$_POST['cat'];
 
+
 	$the_query = new WP_Query( $args );
 	set_query_var( 'pal', $pal );
 
@@ -31,6 +32,7 @@ function ajaxStory () {
 
 	$stories = ob_get_clean();
 	$stories .= $_POST['num'];
+
 
 	die($stories);
 }

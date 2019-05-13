@@ -7,7 +7,6 @@ function moduleEvents($id) {
 	$pal = ( palette ) ? 1 : 3;
 	$palBtn = ( palette ) ? 1 : '4 btn3';
 
-	$count = get_field('events_count',$id);
 	$events = [];
 	switch ( get_field('show',$id) ) {
 		case 'past' : $show = 'past'; break;
@@ -39,31 +38,30 @@ function moduleEvents($id) {
 		foreach ( $key as $item ) {
 
 			$i++;
-			$cl = ( $count >= $i ) ? 'true' : '';
-			$event .= '<div class="col-md-12 '.$cl.'">
+			$event .= '<div class="col-md-6">
 				<div class="v-mid">
 					<div class="vc-mid">
 						<div class="data">
-							<div class="name"><a href="'. $item['link'] .'">'. $item['title'] .'<div class="bg1'.$pal.'"></div></a></div>			
-							'. $item['desc'] .'		
+							<div class="name">'. $item['title'] .'<div class="bg'.$pal.'"></div></div>			
+							'. $item['desc'] .'
 							<div class="meta">'. $item['date'] .'</div>
-							<a href="'. $item['link'] .'"><button class="ih-btn btn'.$pal.'">' . __('view','impact-hub-theme') . arrowR .'</button></a>		
+							<a href="'. $item['link'] .'"><button class="ih-btn btn'.$pal.'">' . __('view','impact-hub-theme') . arrowR .'</button></a>
 						</div>
 					</div>
 					<div class="vc-mid img" style="background-image:url('. $item['img'] .')"></div>
 				</div>
-				<div style= padding-top:20px;></div>
 			</div>';
 
 		}
 
-		if ( $i > $count ) $event .= '<p class="clear"><button class="showEvent ih-btn bg5 bgc'.$palBtn.'">' . __('load more', 'impact-hub-theme') . '</button></p>';
+		if ( $i > 10 ) $event .= '<p class="clear"><button class="showEvent ih-btn bg5 bgc'.$palBtn.'">load more</button></p>';
+
 		$event .= '</div>';
 
 	}
 
 	return '
-    <div class="mdls area-events bg'.$pal[2].'">
+    <div class="mdls area-events bg'.$pal.'">
    		<div class="container">
             <div class="row">
         		<div class="slider-'. $id .' owl-carousel">'. $event .'</div>

@@ -62,14 +62,12 @@ a, a:hover, a:focus { text-decoration: none; }
 .bg5 {background: $bg5}
 .bg6 {background: $bg6}
 
-
 .cr1 {background: $bg1}
 .cr2 {background: $bg2}
 .cr3 {background: $bg3}
 .cr4 {background: $bg4}
 .cr5 {background: $bg5}
 .cr6 {background: $bg6}
-
 
 .color-1 { background: #2FBACB; }
 .color-2 { background: #3A9B89; }
@@ -127,7 +125,7 @@ a, a:hover, a:focus { text-decoration: none; }
 .logo {
   color: $cr4;
   display: inline-block;
-  max-width: 390px;
+  max-width: 290px;
   vertical-align: top;
   width: 100%;
   .img {
@@ -149,8 +147,6 @@ a, a:hover, a:focus { text-decoration: none; }
     word-break: break-word;
   }
 }
-
-.scroll .logo .loc { font-size: 24px }
 
 .social {
   text-align: center;
@@ -183,7 +179,7 @@ body .vc_general[class*="vc_btn"],
   line-height: 1;
   min-height: 40px;
   padding: 0 12px;
-  /*text-transform: lowercase;*/
+  text-transform: lowercase;
   transition: .2s;
   svg {
     height: 16px;
@@ -272,12 +268,6 @@ body .vc_general[class*="vc_btn"],
   max-width: 1060px;
 }
 
-body.search {
-  .area-events .col-md-10 { display: block; }
-  .area-stories.pages .col-md-6 .img { display: none; }
-  .area-stories.pages .col-md-6 .data { margin-top: 0; }
-}
-
 .gi-animate {
   display: block;
   font-size: 21px;
@@ -316,7 +306,7 @@ body.search {
 }
 
 @media (max-width: 480px) {
-  .logo .loc { font-size: 18px !important; }
+  .logo .loc { font-size: 20px; }
   .mdls .title { font-size: 35px; }
 }
 
