@@ -115,6 +115,8 @@ add_action( 'init', function () {
 } );
 
 function vc_module_sc( $atts ) {
+	if(!isset($atts['id']) || $atts['id'] == '')
+		return "You need to select a module in the administration.";
 	return do_shortcode('[module id="'. floor($atts['id']) .'"]');
 }
 

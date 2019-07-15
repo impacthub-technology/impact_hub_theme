@@ -19,11 +19,18 @@
     }
 
     $table = [
-        'Date' => $date,
-        'Duration' => get_field('duration'),
-        'Location' => $loc,
-        'Register' => get_field('register')
+        __('Date','impact-hub-theme') => $date,
+	    __('Time','impact-hub-theme') => date_format( date_create(get_post_meta($id,'_EventStartDate',true)), 'G:i' ) . ' - ' . date_format( date_create(get_post_meta($id,'_EventEndDate',true)), 'G:i' ),
+        __('Location','impact-hub-theme') => $loc,
     ];
+
+	if(get_field('register') != null)
+	    $table[__('Register','impact-hub-theme')] = '<a href="' . get_field('register') . '">' . __('Register','impact-hub-theme') . '</a>';
+
+	$price = tribe_get_cost($id,true);
+	if($price == null)
+	    $price = __('Free', 'impact-hub-theme');
+
     ?>
 	<div class="area-event">
 		<a href="<?= PAGE_EVENTS; ?>"><?php svg('arrow-l'); ?></a>
@@ -47,7 +54,7 @@
                     <?php } ?>
                     <div class="price bgc<?= $pal; ?>">
                         <div class="v-mid">
-                            <div class="vc-mid">Price <?= tribe_get_cost($id,true); ?></div>
+                            <div class="vc-mid"><?= __('Entry fee','impact-hub-theme') ?> <?= $price ?></div>
                         </div>
                     </div>
                 </div>
@@ -58,10 +65,10 @@
 	</div>
 
     <div class="area-events bg<?= $pal; ?>">
-        <h2 class="title">See other Events<div class="bg4"></div></h2>
+        <h2 class="title"><?= __('See other Events','impact-hub-theme') ?><div class="bg4"></div></h2>
         <div class="container"><div class="events"><div></div></div></div>
         <p class="clear">
-            <button class="addEvent ih-btn btn5">load more</button>
+            <button class="addEvent ih-btn btn5"><?= __('load more','impact-hub-theme') ?></button>
             <i class="glyphicon glyphicon-refresh gi-animate"></i>
         </p>
     </div>

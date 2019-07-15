@@ -1,77 +1,89 @@
 <?php
 # Template Name: Stories
+
 get_header();
 
 $pal = ( palette ) ? 1 : 2;
 
-$id = get_the_ID();
 $stories = '';
-$i = $count = (int)get_field('stories_count',$id);
-$order = ( get_field('sortable',$id) == 'ASC' ) ? 'ASC' : 'DESC';
-if ( $_COOKIE['blogSort'] == 'ASC' ) $order = 'ASC';
-if ( $_COOKIE['blogSort'] == 'DESC' ) $order = 'DESC';
+
+$i = $count = (int)get_field('stories_count');
+$order = ( get_field('sortable') == 'ASC' ) ? 'ASC' : 'DESC';
+
+if ( isset($_COOKIE['blogSort']) and $_COOKIE['blogSort'] == 'ASC' ) $order = 'ASC';
+if ( isset($_COOKIE['blogSort']) and $_COOKIE['blogSort'] == 'DESC' ) $order = 'DESC';
+
 
 $_cat = ( isset($_COOKIE['blogCat']) ) ? htmlspecialchars($_COOKIE['blogCat']) : '';
 $cat = ( isset($_COOKIE['blogCat']) and $_COOKIE['blogCat'] != 'all' ) ? get_category_by_slug($_COOKIE['blogCat'])->term_id : 0;
 
-$agrs = [ 'numberposts' => $count, 'orderby' => 'date', 'order' => $order, 'suppress_filters' => false ];
-if ( $cat > 0 ) $agrs['category'] = $cat;
+$args = [
+	'posts_per_page' => $count,
+	'orderby' => 'date',
+	'order' => $order,
+	'suppress_filters' => false
+];
 
-$posts = get_posts( $agrs );
-$sel = ( $order == 'ASC' ) ? 'selected' : '';
+if ( $cat > 0 ) $args['category'] = $cat;
 
-$title = get_field('title',$id);
-$sub = get_field('subtitle',$id);
-if ( $sub != '' ) $title .= '<p class="bgc2">'. $sub .'</p>';
-if ( $title != '' ) $title = '<div class="title">'. $title .'<div class="bg2"></div></div>';
+$the_query = new WP_Query( $args );
+set_query_var( 'pal', $pal );
+
 ?>
 
-<div class="sortable bg<?= $pal; ?>">
-	<p>Sort by</p>
-	<select id="sortable">
-		<option value="DESC">From New to Old</option>
-		<option value="ASC" <?= $sel; ?>>From Old to New</option>
-	</select>
-</div>
+    <div class="sortable bg<?= $pal ?>">
+        <select id="sortable">
+            <option value="DESC" <?= $order == 'DESC' ? 'selected' : '' ?>>
+				<?= __('Show newest first', 'impact-hub-theme') ?>
+            </option>
+            <option value="ASC" <?= $order == 'ASC' ? 'selected' : '' ?>>
+				<?= __('Show oldest first', 'impact-hub-theme') ?>
+            </option>
+        </select>
+    </div>
 
-<section id="content" role="main" class="bg6">
-	<div class="mdls area-stories bg6">
-		<div class="container">
-            <?= $title; ?><div class="mod-content"><?= get_field('content',$id); ?></div>
-			<div class="row story-<?= $id; ?>">
-				<?php foreach ( $posts as $key ) { $i--; ?>
-
-                    <?php
-					$excerpt = $key->post_excerpt;
-					if ( trim($excerpt) == '' ) {
-						$excerpt = substr(trim(strip_tags($key->post_content)),0,150);
-						$temp = explode(' ',$excerpt);
-						array_pop($temp);
-						$excerpt = implode(' ',$temp);
+    <section id="content" role="main" class="bg6">
+        <div class="mdls area-stories bg6">
+            <div class="container">
+				<?php if (get_field('title')) : ?>
+                    <div class="title">
+						<?= get_field('title') ?>
+						<?php if (get_field('subtitle')) : ?>
+                            <p class="bgc2">
+								<?= get_field('subtitle') ?>
+                            </p>
+						<?php endif; ?>
+                        <div class="bg2"></div>
+                    </div>
+				<?php endif; ?>
+                <div class="mod-content"><?= get_field('content'); ?></div>
+                <div class="row story-<?= get_the_ID() ?>">
+					<?php
+					if ( $the_query->have_posts() ) {
+						while ( $the_query->have_posts() ) {
+							$i--;
+							$the_query->the_post();
+							get_template_part('templates/post','summary');
+						}
 					}
+					wp_reset_postdata();
 					?>
-					<div class="col-md-6">
-						<div class="img" style="background-image:url(<?= get_the_post_thumbnail_url($key->ID,'full') ; ?>)"></div>
-						<div class="data">
-							<div class="name"><?= $key->post_title; ?><div class="bg1"></div></div>
-							<?= $excerpt; ?>
-							<div class="meta bgc<?= $pal; ?>"><?= get_the_date( 'd/m/Y', $key ) .' - '. get_the_author_meta('display_name',$key->post_author); ?></div>
-							<a href="<?= get_permalink($key->ID); ?>"><button class="ih-btn btn<?= $pal; ?>">view<?= arrowR; ?></button></a>
-						</div>
-					</div>
-				<?php } ?>
-			</div>
-			<?= ( $i < 1 ) ? '<button class="addStory ih-btn btn1" data-story="'. $id .'">load more</button><i class="glyphicon glyphicon-refresh gi-animate"></i>' : ''; ?>
-		</div>
-	</div>
-</section>
+                </div>
+				<?php if( $i < 1 ) : ?>
+                    <button class="addStory ih-btn btn1" data-story="<?= get_the_ID() ?>"><?= __('load more', 'impact-hub-theme') ?></button>
+                    <i class="glyphicon glyphicon-refresh gi-animate"></i>
+				<?php endif; ?>
+            </div>
+        </div>
+    </section>
 
-<script>
-jQuery(document).ready(function($){
-    stories[<?= $id; ?>] = [<?= $count; ?>,"<?= $order; ?>",<?= $cat; ?>];
-    $('#pageMenu a[href="<?= home_url('/category/') . $_cat; ?>/"]').addClass('current');
-});
-</script>
+<?php the_content(); ?>
+
+    <script>
+        jQuery(document).ready(function(){
+            stories[<?= get_the_ID() ?>] = [<?= $count; ?>,"<?= $order; ?>",<?= $cat; ?>];
+        });
+    </script>\
 
 
 <?php get_footer(); ?>

@@ -43,8 +43,8 @@
         <div id="search" class="bg1">
             <div class="sbg"><?php svg('search-bg'); ?></div>
             <form action="<?= home_url(); ?>" onsubmit="return !(sr.value.trim() === '')">
-                <div class="ih-input"><input id="sr" name="s" placeholder="Search..."></div>
-                <button class="ih-btn btn2">show results<?php arrowR; ?></button>
+                <div class="ih-input"><input id="sr" name="s" placeholder="<?= __('Search...', 'impact-hub-theme') ?>"></div>
+                <button class="ih-btn btn2"><?= __('show results', 'impact-hub-theme') ?> <?php arrowR; ?></button>
                 <div class="sclose"><?php svg('close'); ?></div>
             </form>
         </div>

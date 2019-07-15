@@ -30,6 +30,7 @@ include __DIR__ . '/inc/theme-settings.php';
 include __DIR__ . '/inc/theme-customizer.php';
 include __DIR__ . '/inc/theme-html.php';
 include __DIR__ . '/inc/theme-ajax.php';
+include __DIR__ . '/inc/github-updates.php';
 if ( defined( 'WPB_VC_VERSION' ) ) include __DIR__ . '/inc/v-composer.php';
 
 
@@ -50,3 +51,4 @@ add_filter('acf/settings/load_json', function ( $paths ) {
 	$paths[] = get_template_directory() . '/acf-json';
 	return $paths;
 } );
+

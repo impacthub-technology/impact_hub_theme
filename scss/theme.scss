@@ -300,7 +300,7 @@ body .vc_general[class*="vc_btn"],
 @media (max-width: 782px) {
   html[lang] { margin-top: 0 !important; }
   body { font-size: 22px; }
-  #wpadminbar { display: none; }
+  #wpadminbar { display: none;  }
   [class*="area-"] { padding: 40px 0; }
   .mdls .title { font-size: 45px; }
 }
@@ -309,7 +309,6 @@ body .vc_general[class*="vc_btn"],
   .logo .loc { font-size: 20px; }
   .mdls .title { font-size: 35px; }
 }
-
 
 @import "header";
 @import "footer";
